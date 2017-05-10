@@ -1,5 +1,5 @@
 {
-  "name": "CS 5610 - Web Development",
+  "name": "web-dev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
   "main": "server.js",

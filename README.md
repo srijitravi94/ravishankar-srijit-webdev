@@ -17,4 +17,4 @@ This repository is a part of coursework for CS 5610 - Web Development at Northea
 ## RESOURCES
 * [Homepage](http://ravishankar-srijit-webdev.herokuapp.com/)
 * [Assignments](http://ravishankar-srijit-webdev.herokuapp.com/assignment/)
-* [Project](http://ravishankar-srijit-webdev.herokuapp.com/projrct/)
+* [Project](http://ravishankar-srijit-webdev.herokuapp.com/project/)

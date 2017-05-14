@@ -1,9 +1,6 @@
-* {
-    box-sizing: border-box;
-}
 
 #header-nav {
-    background-color: #191919;
+    background-color: #191919 !important;
     border: 0;
     border-radius: 0;
     margin-top: -20px;
@@ -25,11 +22,11 @@
 
 #nav-list {
     margin-top: -15px;
-    background-color: #191919;
+    background-color: #191919 !important;
 }
 
 #nav-list a{
-    color: #fec503;
+    color: #fec503 !important;
     font-size: 1.3em;
     margin-bottom: 15px;
 }
@@ -52,6 +49,7 @@
 
 @media (max-width: 768px) {
 
+
     #collapsable-nav {
         border: none;
     }
@@ -65,14 +63,4 @@
     .navbar-header button.navbar-toggle:active{
         background-color: #333333;
     }
-}
-
-.full-screen {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#mycarousel {
-    margin-top: -20px;
 }

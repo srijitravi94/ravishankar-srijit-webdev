@@ -1,29 +1,3 @@
-var $item = $('.carousel .item');
-var $wHeight = $(window).height();
-$item.eq(0).addClass('active');
-$item.height($wHeight);
-$item.addClass('full-screen');
-
-$('.carousel img').each(function() {
-    var $src = $(this).attr('src');
-    var $color = $(this).attr('data-color');
-    $(this).parent().css({
-        'background-image' : 'url(' + $src + ')',
-        'background-color' : $color
-    });
-    $(this).remove();
-});
-
-$(window).on('resize', function (){
-    $wHeight = $(window).height();
-    $item.height($wHeight);
-});
-
-$('.carousel').carousel({
-    interval: 3000,
-    pause: "false"
-});
-
 $(document).click(function(e) {
     var screenWidth = window.innerWidth;
     if (screenWidth < 768){
@@ -32,3 +6,29 @@ $(document).click(function(e) {
         }
     }
 });
+
+
+
+angular.module('BonAppetit',['ui.router'])
+    .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
+
+        $locationProvider.hashPrefix('');
+
+        $stateProvider
+
+        //route for the main page
+            .state('index',{
+                url:'/',
+                views: {
+                    'header': {
+                        templateUrl: 'views/header.view.html'
+                    },
+                    'content': {
+                        templateUrl: 'views/main.view.html'
+                    }
+                }
+            });
+
+        $urlRouterProvider.otherwise('/');
+
+    });

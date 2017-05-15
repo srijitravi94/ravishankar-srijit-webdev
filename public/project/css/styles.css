@@ -107,3 +107,19 @@
     outline: #333333;
 }
 
+.search-box {
+    height : 50px;
+}
+
+a .glyphicon-search {
+    width: 30px;
+}
+
+@media (max-width: 576px) {
+    .search-bar {
+        padding-top: 20%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+

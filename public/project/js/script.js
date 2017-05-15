@@ -27,6 +27,26 @@ angular.module('BonAppetit',['ui.router'])
                         templateUrl: 'views/main.view.html'
                     }
                 }
+            })
+
+        //route for register page
+            .state('index.register', {
+                url:'register',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/register.view.html'
+                    }
+                }
+            })
+
+        //route for login page
+            .state('index.login', {
+                url:'login',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/login.view.html'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/');

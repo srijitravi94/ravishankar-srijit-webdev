@@ -1,3 +1,4 @@
+/* Header and Navigation*/
 
 #header-nav {
     background-color: #191919 !important;
@@ -22,7 +23,7 @@
 
 #nav-list {
     margin-top: -15px;
-    background-color: #191919 !important;
+    background-color: #191919;
 }
 
 #nav-list a{
@@ -64,3 +65,45 @@
         background-color: #333333;
     }
 }
+
+/* Search bar for location */
+
+.search-bar {
+    padding-top: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.register, .login {
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.register-element, .login-element {
+    color: #191919;
+}
+
+.register-element:hover,
+.register-element:focus,
+.register-element:active,
+.login-element:hover,
+.login-element:focus,
+.login-element:active {
+    color: #191919;
+}
+
+.form-group .btn {
+    color : #fec503;
+    background-color: #191919;
+
+}
+
+.form-group .btn:hover, .btn-search:hover {
+    background-color: #333333;
+}
+
+.form-group .btn:active {
+    outline: #333333;
+}
+

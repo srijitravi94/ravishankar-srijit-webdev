@@ -74,7 +74,7 @@
 }
 
 .register, .login {
-    margin-top: 5%;
+    margin-top: 15%;
     margin-left: 25%;
     margin-right: 25%;
 }
@@ -117,6 +117,12 @@ a .glyphicon-search {
 @media (max-width: 768px) {
     .search-bar {
         padding-top: 200px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .register, .login {
+        padding-top: 120px;
         margin-left: 10%;
         margin-right: 10%;
     }

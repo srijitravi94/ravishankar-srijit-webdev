@@ -4,11 +4,11 @@ ol,ul {
 
 .cb-slideshow,
 .cb-slideshow:after {
-    margin-top: -20px;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     z-index: 0;
+    margin-bottom: -5px;
 }
 
 .cb-slideshow li span {

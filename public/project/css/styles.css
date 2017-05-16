@@ -50,7 +50,6 @@
 
 @media (max-width: 768px) {
 
-
     #collapsable-nav {
         border: none;
     }
@@ -69,7 +68,7 @@
 /* Search bar for location */
 
 .search-bar {
-    padding-top: 20%;
+    padding-top: 300px;
     margin-left: 25%;
     margin-right: 25%;
 }
@@ -115,11 +114,10 @@ a .glyphicon-search {
     width: 30px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .search-bar {
-        padding-top: 20%;
+        padding-top: 200px;
         margin-left: 10%;
         margin-right: 10%;
     }
 }
-

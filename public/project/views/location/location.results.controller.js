@@ -5,7 +5,7 @@
     
     function SearchLocationController(ApiService, $stateParams) {
         var vm = this;
-        var location = $stateParams.location;
+        vm.location = $stateParams.location;
 
         function init() {
             searchResults();
@@ -14,8 +14,12 @@
         return init();
 
         function searchResults() {
-          vm.hello = location;
+          ApiService
+              .searchLocation(vm.location)
+              .then(function (response) {
+                 vm.suggestions = response.data.location_suggestions;
+                 console.log(vm.suggestions);
+              });
         }
-
     }
 })();

@@ -10,7 +10,8 @@
         function search(location) {
             if (location) {
                     $location.url("/location/" + location);
-            } else {
+            }
+            else {
                 console.log("Please enter a location")
             }
         }

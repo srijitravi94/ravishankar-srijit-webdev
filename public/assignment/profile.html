@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -13,7 +13,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="profile.html">
                 Profile
             </a>
             <p class="navbar-text pull-right">
@@ -26,33 +26,35 @@
 </nav>
 
 
-    <div class="container-fluid">
-        <h1>Profile</h1>
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="alice">
+        </div>
 
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="alice">
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-            </div>
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Alice">
-            </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-            </div>
-        </form>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+        </div>
 
-        <a class="btn btn-primary btn-block"
-           href="website-list.html">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="login.html">Logout</a>
-    </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+        </div>
+
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+        </div>
+    </form>
+
+    <a class="btn btn-primary btn-block"
+       href="website-list.html">Websites</a>
+
+    <a class="btn btn-danger  btn-block"
+       href="login.html">Logout</a>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

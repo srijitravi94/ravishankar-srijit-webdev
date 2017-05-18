@@ -1,12 +1,35 @@
-input.form-control {
+input.form-control,
+textarea.form-control{
     margin-bottom: 5px;
 }
 
 body {
     padding-top: 60px;
     padding-bottom: 60px;
+    overflow: hidden;
 }
 
-nav.navbar.navbar-default.navbar-fixed-top {
-    padding-right: 15px;
+.navbar-default {
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-link,
+.navbar.navbar-default a {
+    color: white;
+}
+
+.navbar-header,
+.row.navbar-text {
+    width: 100%;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-link:hover {
+    color: white;
+}
+
+a {
+    white-space: nowrap;
 }

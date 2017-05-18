@@ -110,7 +110,7 @@
     background-color: #191919;
 }
 
-.form-control:focus {
+.form-control:focus, .form-control:hover {
     border-color: #fec503;
 }
 

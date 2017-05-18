@@ -48,7 +48,7 @@
     margin-top: -10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     #collapsable-nav {
         border: none;
@@ -81,6 +81,10 @@
     margin-bottom: 10%;
 }
 
+.search-box:hover{
+    border-color: transparent;
+}
+
 .register, .login {
     margin-top: 15%;
     margin-left: 25%;
@@ -104,7 +108,10 @@
 .form-group .btn {
     color : #fec503;
     background-color: #191919;
+}
 
+.form-control:focus {
+    border-color: #fec503;
 }
 
 .form-group .btn:hover, .btn-search:hover {
@@ -150,5 +157,6 @@ a .glyphicon-search {
     margin-top: -5%;
     margin-left: 20px;
 }
+
 
 

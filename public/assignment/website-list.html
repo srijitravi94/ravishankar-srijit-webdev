@@ -11,13 +11,18 @@
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid row">
         <div class="navbar-header">
-            <a class="navbar-brand" href="profile.html">
-                Profile
+            <p class="navbar-text pull-left">
+                <a href="profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="website-list.html">
+                Websites
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="website-new.html" class="navbar-link">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -26,7 +31,6 @@
 </nav>
 
 <div class="container-fluid">
-    <h1>Website List</h1>
 
     <ul class="list-group">
         <li class="list-group-item active">
@@ -132,29 +136,13 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-star"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-heart"></span>
-                </a>
-            </div>
-        </div>
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="profile.html" class="navbar-link">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </p>
+    </div>
     </div>
 </nav>
 

@@ -7,7 +7,7 @@ $(document).click(function(e) {
 
 (function () {
     angular
-        .module("BonAppetit",["ui.router"])
+        .module("BonAppetit",["ui.router","angularUtils.directives.dirPagination"])
         .config(configuration);
 
             function configuration($stateProvider, $urlRouterProvider,$locationProvider) {

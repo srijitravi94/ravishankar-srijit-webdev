@@ -17,8 +17,16 @@
           ApiService
               .searchLocation(vm.location)
               .then(function (response) {
-                 vm.suggestions = response.data.location_suggestions;
-                 console.log(vm.suggestions);
+                  var suggestions = [];
+                  var location_suggestions = response.data.location_suggestions;
+                  var a=0;
+
+                  for(var i=0; i<location_suggestions.length; i++) {
+                      suggestions[a] = location_suggestions[i];
+                      console.log(suggestions[a]);
+                      a++;
+                  }
+                  vm.suggestions = suggestions;
               });
         }
     }

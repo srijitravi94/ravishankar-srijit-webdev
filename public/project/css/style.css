@@ -155,8 +155,30 @@ a .glyphicon-search {
 /* Location suggestions page */
 .search-result-title {
     margin-top: -5%;
-    margin-left: 20px;
 }
 
+li span.content {
+    font-style: italic;
+    color: #bb4100;
+}
 
+a.location-title {
+    color: #191919;
+}
 
+.pagination {
+    margin-left: 15px;
+}
+
+.pagination>li>a,
+.pagination>li>a:focus,
+.pagination>li>a:hover {
+    color: #bb4100;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:hover,
+.pagination>.active>a:focus {
+    background-color: #bb4100;
+    border-color: #bb4100;
+}

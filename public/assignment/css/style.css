@@ -62,10 +62,21 @@ li {
 }
 
 .widget-video {
-    width: 100%;
-    height: 300px;
+    position: relative;
+    padding-bottom: 56.25%;
 }
 
+.widget-video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.wd-widget-youtube-toolbar {
+    margin-right: -15px;
+}
 
 
 

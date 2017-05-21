@@ -130,7 +130,7 @@ a .glyphicon-search {
     width: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .search-bar {
         padding-top: 200px;
         margin-left: 10%;

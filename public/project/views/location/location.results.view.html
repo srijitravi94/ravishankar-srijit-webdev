@@ -17,9 +17,9 @@
     <ul class="media-list">
         <li class="media" dir-paginate="model in model.suggestions | itemsPerPage:5">
             <h4 class="media-heading"><a class="location-title" href="">{{model.title}}</a></h4>
-            <span class=""> <span class="content">Type &nbsp;: &nbsp;</span> {{model.entity_type}}<br></span>
-            <span class=""> <span class="content">City &nbsp;: &nbsp;</span> {{model.city_name}}<br></span>
-            <span class=""> <span class="content">Country &nbsp;: &nbsp;</span> {{model.country_name}}<br></span>
+            <span class=""> <span class="content">Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{model.entity_type | uppercase}}<br></span>
+            <span class=""> <span class="content">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{model.city_name}}<br></span>
+            <span class=""> <span class="content">Country &nbsp;</span>: &nbsp; {{model.country_name}}<br></span>
         </li>
     </ul>
 </div>

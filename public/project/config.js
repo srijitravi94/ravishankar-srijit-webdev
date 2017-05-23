@@ -21,10 +21,10 @@ $(document).click(function(e) {
                     url:"/",
                     views: {
                         "header": {
-                            templateUrl: "views/main/header.view.html"
+                            templateUrl: "views/main/templates/header.view.html"
                         },
                         "content": {
-                            templateUrl: "views/main/main.view.html",
+                            templateUrl: "views/main/templates/main.view.html",
                             controller: "MainController",
                             controllerAs: "model"
                         }
@@ -36,7 +36,7 @@ $(document).click(function(e) {
                     url:"register",
                     views: {
                         "content@": {
-                            templateUrl : "views/users/register.view.html"
+                            templateUrl : "views/users/templates/register.view.html"
                         }
                     }
                 })
@@ -46,7 +46,7 @@ $(document).click(function(e) {
                     url:"login",
                     views: {
                         "content@": {
-                            templateUrl : "views/users/login.view.html"
+                            templateUrl : "views/users/templates/login.view.html"
                         }
                     }
 
@@ -57,7 +57,7 @@ $(document).click(function(e) {
                     url:"location/:location",
                     views: {
                         "content@": {
-                            templateUrl : "views/location/location.results.view.html",
+                            templateUrl : "views/location/templates/location.results.view.html",
                             controller: "SearchLocationController",
                             controllerAs: "model"
                         }

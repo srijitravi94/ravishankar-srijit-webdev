@@ -28,6 +28,7 @@
                     if(cityCollections != null) {
                         for(var i=0; i<cityCollections.length; i++) {
                             collections[a] = cityCollections[i].collection;
+                            console.log(collections[a]);
                             a++;
                         }
                     } else {

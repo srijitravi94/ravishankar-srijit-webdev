@@ -12,8 +12,12 @@
 
 <div class="container-fluid">
     <h2 class="collection-result-title">All collections in the city of {{model.city_name}}...</h2>
-</div>
-
-<div ng-repeat="model in model.collections">
-    {{model.title}}
+    <div ng-repeat="model in model.collections">
+        <div class="col-md-3 col-sm-6 col-xxs-12">
+            <div class="collection-image">
+                <img class="img-responsive" src="{{model.image_url}}" alt="{{model.title}}">
+                <span>{{model.title}}</span>
+            </div>
+        </div>
+    </div>
 </div>

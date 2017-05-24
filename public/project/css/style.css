@@ -94,6 +94,7 @@
 
 .register-element, .login-element {
     color: #191919;
+    margin-right: 20px;
 }
 
 .register-element:hover,
@@ -183,6 +184,32 @@ a.location-title {
     border-color: #bb4100;
 }
 
+.collection-image {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 30px;
+}
+
+.collection-image span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    background-color: #000000;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+@media (min-width: 680px) and (max-width: 767px) {
+    .collection-image {
+        margin-right: 90px;
+    }
+}
+
 .test {
     margin-top: 100px;
 }
+

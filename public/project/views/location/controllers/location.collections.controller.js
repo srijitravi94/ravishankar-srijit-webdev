@@ -8,8 +8,6 @@
         var model = this;
         model.city_name = $stateParams['city_name'];
         model.city_id = $stateParams['city_id'];
-        model.entity_type = $stateParams['entity_type'];
-        model.entity_id = $stateParams['entity_id'];
 
         function init() {
             cityCollections();

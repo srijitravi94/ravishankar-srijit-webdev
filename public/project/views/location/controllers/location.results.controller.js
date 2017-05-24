@@ -33,6 +33,7 @@
 
                   for(var i=0; i<location_suggestions.length; i++) {
                       suggestions[a] = location_suggestions[i];
+                      console.log(suggestions[a])
                       a++;
                   }
                   model.suggestions = suggestions;

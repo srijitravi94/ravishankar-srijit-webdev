@@ -66,7 +66,7 @@ $(document).click(function(e) {
 
                 //route for collections in a location
                 .state("index.collections", {
-                    url:":city_name/:city_id/:entity_type/:entity_id",
+                    url:":city_name/:city_id",
                     views: {
                         "content@": {
                             templateUrl : "views/location/templates/location.collections.view.html",

@@ -1,15 +1,15 @@
 (function () {
     angular
         .module("BonAppetit")
-        .controller("MainController",MainController);
+        .controller("mainController",mainController);
 
-    function MainController($location) {
-        var vm = this;
-        vm.search = search;
+    function mainController($location) {
+        var model = this;
+        model.search = search;
 
         function search(location) {
             if (location) {
-                    $location.url("/location/" + location);
+                    $location.url("/search/" + location);
             }
             else {
                 console.log("Please enter a location")

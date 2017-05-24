@@ -152,8 +152,8 @@ a .glyphicon-search {
     }
 }
 
-/* Location suggestions page */
-.search-result-title {
+/* Location suggestions page and collections page*/
+.search-result-title, .collection-result-title {
     margin-top: -5%;
 }
 
@@ -181,4 +181,8 @@ a.location-title {
 .pagination>.active>a:focus {
     background-color: #bb4100;
     border-color: #bb4100;
+}
+
+.test {
+    margin-top: 100px;
 }

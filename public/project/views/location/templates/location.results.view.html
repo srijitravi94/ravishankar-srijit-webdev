@@ -1,8 +1,8 @@
-<div ng-controller="MainController as main">
-    <form role="form" ng-submit="main.search(location)">
+<div>
+    <form role="form" ng-submit="model.search(location)">
         <div class="input-group search-bar-location">
             <input type="text" class="form-control search-box" placeholder="Search for a location..." autofocus="" ng-model="location">
-            <a class="input-group-addon search-box btn-primary btn-search" ng-click="main.search(location)">
+            <a class="input-group-addon search-box btn-primary btn-search" ng-click="model.search(location)">
                 <i class="glyphicon glyphicon-search"></i>
             </a>
         </div>
@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <ul class="media-list">
         <li class="media" dir-paginate="model in model.suggestions | itemsPerPage:5">
-            <h4 class="media-heading"><a class="location-title" href="">{{model.title}}</a></h4>
+            <h4 class="media-heading"><a class="location-title" ui-sref="index.collections({city_name: model.city_name, city_id: model.city_id, entity_type: model.entity_type, entity_id: model.entity_id})">{{model.title}}</a></h4>
             <span class=""> <span class="content">Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{model.entity_type | uppercase}}<br></span>
             <span class=""> <span class="content">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{model.city_name}}<br></span>
             <span class=""> <span class="content">Country &nbsp;</span>: &nbsp; {{model.country_name}}<br></span>

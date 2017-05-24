@@ -25,7 +25,7 @@ $(document).click(function(e) {
                         },
                         "content": {
                             templateUrl: "views/main/templates/main.view.html",
-                            controller: "MainController",
+                            controller: "mainController",
                             controllerAs: "model"
                         }
                     }
@@ -52,13 +52,25 @@ $(document).click(function(e) {
 
                 })
 
-                //route for location results page
+                //route for location search results page
                 .state("index.location", {
-                    url:"location/:location",
+                    url:"search/:location",
                     views: {
                         "content@": {
                             templateUrl : "views/location/templates/location.results.view.html",
-                            controller: "SearchLocationController",
+                            controller: "searchLocationController",
+                            controllerAs: "model"
+                        }
+                    }
+                })
+
+                //route for collections in a location
+                .state("index.collections", {
+                    url:":city_name/:city_id/:entity_type/:entity_id",
+                    views: {
+                        "content@": {
+                            templateUrl : "views/location/templates/location.collections.view.html",
+                            controller: "locationCollectionsController",
                             controllerAs: "model"
                         }
                     }

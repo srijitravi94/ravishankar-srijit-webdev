@@ -1,12 +1,13 @@
 (function () {
     angular
         .module("BonAppetit")
-        .factory("ApiService", apiService);
+        .factory("apiService", apiService);
     
     function apiService($http) {
 
         var api ={
-            "searchLocation" : searchLocation
+            "searchLocation" : searchLocation,
+            "searchCollections" : searchCollections
         };
 
         var baseUrl = "https://developers.zomato.com/api/v2.1/";
@@ -17,6 +18,11 @@
         function searchLocation(location) {
             var searchLocationUrl = baseUrl + "locations?query=" + location + "&count=10" + apikey;
             return $http.get(searchLocationUrl);
+        }
+        
+        function searchCollections(cityId) {
+            var searchCollectionsUrl = baseUrl + "collections?city_id=" + cityId + apikey;
+            return $http.get(searchCollectionsUrl);
         }
     }
 })();

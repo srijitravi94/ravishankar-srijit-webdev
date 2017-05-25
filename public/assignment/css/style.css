@@ -9,7 +9,7 @@ body {
     padding-bottom: 60px;
 }
 
-.container-fluid .navbar-header, .container-fluid.navbar-footer {
+nav .container-fluid.row, .navbar-footer {
     background-color: #337ab7;
     border-color: #337ab7;
 }

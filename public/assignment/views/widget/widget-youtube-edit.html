@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Widget Heading Editor</title>
+    <title>Widget YouTube Editor</title>
     <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
@@ -18,8 +18,8 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="widget-heading-edit.html">
-                Widget Heading Editor
+            <a class="navbar-brand" href="widget-youtube-edit.html">
+                Widget YouTube Editor
             </a>
             <p class="navbar-text pull-right">
                 <a href="widget-list.html" class="navbar-link">
@@ -35,7 +35,7 @@
     <label for="name">Name</label>
     <input class="form-control"
            placeholder="facebook"
-           value="Header"
+           value="YouTube"
            id="name"/>
 
     <label for="text">Text</label>
@@ -44,15 +44,18 @@
            value="FLASHBACK FRIDAY"
            id="text"/>
 
-    <label for="size">Size</label>
-    <select id="size" class="form-control">
-        <option>1 (X-Large)</option>
-        <option>2 (Larger)</option>
-        <option>3 (Large)</option>
-        <option>4 (Medium)</option>
-        <option>5 (Small)</option>
-        <option>6 (Smallest)</option>
-    </select>
+    <label for="url">URL</label>
+    <input class="form-control"
+           placeholder="youtube"
+           value="https://www.youtube.com/watch?v=R7FdqIthU0s"
+           id="url"/>
+
+    <label for="width">Width</label>
+    <input class="form-control"
+           placeholder="width"
+           value="100%"
+           id="width"/>
+
 
     <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
 </div>
@@ -60,7 +63,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="../user/templates/profile.view.client.html" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>

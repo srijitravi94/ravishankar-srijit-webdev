@@ -35,8 +35,7 @@
                     model.collections = collections;
                 });
         }
-
-
-
     }
+
+
 })();

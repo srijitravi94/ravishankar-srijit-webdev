@@ -10,7 +10,7 @@
                Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="" class="navbar-link" ng-click="model.update(model.user)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -21,20 +21,16 @@
 
 
 <div class="container-fluid">
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text"
-                   ng-model="model.user.username"
-                   class="form-control"
-                   id="username"
-                   placeholder="alice">
-        </div>
 
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-        </div>
+    <div class="alert alert-danger" ng-show="model.errorMessage">
+        {{model.errorMessage}}
+    </div>
+
+    <div class="alert alert-success" ng-show="model.successMessage">
+        {{model.successMessage}}
+    </div>
+
+    <form>
 
         <div class="form-group">
             <label for="first-name">First Name</label>
@@ -53,19 +49,47 @@
                    id="last-name"
                    placeholder="Wonderland">
         </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   ng-model="model.user.username"
+                   class="form-control"
+                   id="username"
+                   placeholder="alice" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password"
+                   ng-model="model.user.password"
+                   class="form-control"
+                   id="password"
+                   placeholder="alice@123">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   ng-model="model.user.email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com">
+        </div>
+
     </form>
 
     <a class="btn btn-primary btn-block"
-       href="../../website/website-list.html">My Websites</a>
+       href="#!/user/{{model.userId}}/website">My Websites</a>
 
-    <a class="btn btn-danger  btn-block"
-       href="#!login">Logout</a>
+    <a class="btn btn-danger btn-block"
+       href="#!/login">Logout</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid navbar-footer">
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.user._id}}" class="navbar-link">
+                <a href="#!/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </p>

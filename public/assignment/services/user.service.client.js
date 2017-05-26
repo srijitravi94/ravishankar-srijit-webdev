@@ -14,6 +14,7 @@
         var api = {
             createUser : createUser,
             updateUser : updateUser,
+            deleteUser : deleteUser,
             findUserById : findUserById,
             findUserByCredentials : findUserByCredentials,
             findUserByUsername : findUserByUsername
@@ -41,6 +42,12 @@
                 }
             }
             return null;
+        }
+
+        function deleteUser(userId) {
+            var user = findUserById(userId);
+            var index = users.indexOf(user);
+            users.splice(index, 1);
         }
 
         function findUserById(userId) {

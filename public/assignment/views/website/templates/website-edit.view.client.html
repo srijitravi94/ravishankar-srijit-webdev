@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Website edit</title>
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid row">
         <div class="navbar-header">
                 <p class="navbar-text pull-left">
-                    <a href="website-list.view.client.html" class="navbar-link">
+                    <a href="#!/user/{{model.userId}}/website" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
-                <a class="navbar-brand" href="website-edit.view.client.html">
-                   Edit Websites
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}">
+                   Edit Website
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="website-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.updateWebsite(model.website)" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </p>
@@ -36,10 +24,10 @@
             <ul class="list-group">
                 <li class="list-group-item active">
                     <div class="row">
-                        <div class="col-lg-5 col-md-8 col-xs-6 wrapping-text">
+                        <div class="col-lg-6 col-md-8 col-xs-6 wrapping-text">
                             Name
                         </div>
-                        <div class="col-lg-3 visible-lg">
+                        <div class="col-lg-2 visible-lg">
                             Created
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">
@@ -50,84 +38,21 @@
                     </div>
                 </li>
 
-                <li class="list-group-item">
+                <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <div class="col-lg-5 col-md-8 col-xs-6">
+                        <div class="col-lg-6 col-md-8 col-xs-6">
                             <a href="../../page/page-list.html">
-                                Address Book App
+                                {{website.name}}
                             </a>
                         </div>
-                        <div class="col-lg-3 visible-lg">
-                            1/1/2017
+                        <div class="col-lg-2 visible-lg">
+                            {{website.created | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">
-                            2/2/2017
+                            {{website.updated | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 col-xs-6">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-8 col-xs-6">
-                            <a href="../../page/page-list.html">
-                                Blogging App
-                            </a>
-                        </div>
-                        <div class="col-lg-3 visible-lg">
-                            1/1/2017
-                        </div>
-                        <div class="col-md-2 hidden-sm hidden-xs">
-                            2/2/2017
-                        </div>
-                        <div class="col-md-2 col-xs-6">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-8 col-xs-6">
-                            <a href="../../page/page-list.html">
-                                Blogger
-                            </a>
-                        </div>
-                        <div class="col-lg-3 visible-lg">
-                            1/1/2017
-                        </div>
-                        <div class="col-md-2 hidden-sm hidden-xs">
-                            2/2/2017
-                        </div>
-                        <div class="col-md-2 col-xs-6">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-8 col-xs-6">
-                            <a href="../../page/page-list.html">
-                                Script Testing App
-                            </a>
-                        </div>
-                        <div class="col-lg-3 visible-lg">
-                            1/1/2017
-                        </div>
-                        <div class="col-md-2 hidden-sm hidden-xs">
-                            2/2/2017
-                        </div>
-                        <div class="col-md-2 col-xs-6">
-                            <a href="website-edit.view.client.html">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>
@@ -135,34 +60,42 @@
                 </li>
             </ul>
         </div>
+
+
         <div class="col-xs-12 col-sm-8">
             <label for="name">Name</label>
             <input class="form-control"
+                   ng-model="model.website.name"
                    placeholder="facebook"
-                   value="Blogger"
                    id="name"/>
 
             <label for="description">Description</label>
             <textarea id="description"
+                      ng-model="model.website.description"
                       rows="5"
                       placeholder="So big it is its own country"
-                      class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                      class="form-control"></textarea>
 
-            <a href="website-list.view.client.html" class="btn btn-block btn-danger">Delete</a>
+            <a ng-click="model.updateWebsite(model.website)"
+               class="btn btn-block btn-success">
+                Update
+            </a>
+
+            <a ng-click="model.deleteWebsite(model.websiteId)"
+               class="btn btn-block btn-danger">
+                Delete
+            </a>
         </div>
     </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
+    <div class="container-fluid navbar-footer">
         <p class="navbar-text pull-right">
-            <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+            <a href="#!/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
     </div>
     </div>
 </nav>
-
-</body>
-</html>

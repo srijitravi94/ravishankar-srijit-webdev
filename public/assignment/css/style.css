@@ -26,7 +26,8 @@ nav .container-fluid.row, .navbar-footer {
 }
 
 .navbar-default .navbar-brand:hover,
-.navbar-default .navbar-link:hover {
+.navbar-default .navbar-link:hover,
+.navbar-default .navbar-brand:focus {
     color: white;
 }
 

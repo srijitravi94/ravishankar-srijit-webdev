@@ -7,20 +7,26 @@
 
         var model = this;
         model.update = update;
-        var userId = $routeParams.userId;
+        model.deleteUser = deleteUser;
 
-        model.userId = userId;
+        model.userId = $routeParams.userId;
 
-        model.user = userService.findUserById(userId);
+
+        model.user = userService.findUserById(model.userId);
 
         function update(newUser) {
-            var user = userService.updateUser(userId, newUser);
+            var user = userService.updateUser(model.userId, newUser);
 
             if(user == null) {
                 model.errorMessage = "Unable to update user";
             } else {
                 model.successMessage = "User updated successfully";
             }
+        }
+
+        function deleteUser(userId) {
+            userService.deleteUser(userId);
+            $location.url('/login');
         }
     }
 })();

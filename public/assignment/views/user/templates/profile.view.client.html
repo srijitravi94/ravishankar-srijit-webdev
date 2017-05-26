@@ -6,7 +6,7 @@
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="profile.view.client.html">
+            <a class="navbar-brand" href="#!/user/{{model.userId}}">
                Profile
             </a>
             <p class="navbar-text pull-right">
@@ -81,6 +81,12 @@
 
     <a class="btn btn-primary btn-block"
        href="#!/user/{{model.userId}}/website">My Websites</a>
+
+    <a class="btn btn-success btn-block"
+       ng-click="model.update(model.user)">Update Profile</a>
+
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteUser(model.userId)">Delete Profile</a>
 
     <a class="btn btn-danger btn-block"
        href="#!/login">Logout</a>

@@ -1,25 +1,51 @@
 <div class="container-fluid">
     <h1>Register</h1>
+
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+
     <label for="username">Username</label>
     <input type="text"
+           ng-model="username"
            id="username"
            class="form-control"
            placeholder="alice"/>
 
+    <label for="firstName">First Name</label>
+    <input type="text"
+           ng-model="firstName"
+           id="firstName"
+           class="form-control"
+           placeholder="Alice"/>
+
+    <label for="username">Last Name</label>
+    <input type="text"
+           ng-model="lastName"
+           id="lastName"
+           class="form-control"
+           placeholder="Wonderla"/>
+
+
     <label for="password">Password</label>
     <input type="password"
+           ng-model="password"
            id="password"
            class="form-control"
            placeholder="alice@123"/>
 
     <label for="verifyPassword">Verify Password</label>
     <input type="password"
+           ng-model="password2"
            id="verifyPassword"
            class="form-control"
            placeholder="alice@123"/>
 
     <a class="btn btn-primary btn-block"
-       href="#!/profile">Register</a>
+       ng-click="model.register(username, firstName, lastName, password, password2)">
+        Register
+    </a>
+
     <a class="btn btn-danger  btn-block"
-       href="#!login">Cancel</a>
+       href="#!login">
+        Cancel
+    </a>
 </div>

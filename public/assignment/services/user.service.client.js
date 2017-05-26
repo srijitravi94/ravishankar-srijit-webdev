@@ -12,10 +12,20 @@
         ];
 
         var api = {
+            createUser : createUser,
             findUserById : findUserById,
-            findUserByCredentials : findUserByCredentials
-        }
+            findUserByCredentials : findUserByCredentials,
+            findUserByUsername : findUserByUsername
+
+        };
         return api;
+
+        function createUser(newUser) {
+            newUser._id = (new Date()).getTime() + "";
+            newUser.created = new Date();
+            users.push(newUser);
+            return newUser;
+        }
 
         function findUserById(userId) {
             for(var u in users) {
@@ -24,7 +34,7 @@
             }
             return null;
         }
-        
+
         function findUserByCredentials(username, password) {
             for(var u in users) {
                 var user = users[u];
@@ -34,6 +44,16 @@
                 }
             }
             return null;
+        }
+
+        function findUserByUsername(username) {
+            var user = users.find(function (user) {
+                return user.username === username;
+            });
+            if(typeof user === 'undefined') {
+                return null;
+            }
+            return user;
         }
     }
 })();

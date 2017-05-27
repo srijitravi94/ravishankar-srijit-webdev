@@ -1,24 +1,25 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid row">
         <div class="navbar-header">
-                <p class="navbar-text pull-left">
-                    <a href="#!/user/{{model.userId}}/website" class="navbar-link">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                </p>
-                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}">
-                   Edit Website
+            <p class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <p class="navbar-text pull-right">
-                    <a ng-click="model.updateWebsite(model.website)" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </p>
+            </p>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                Edit Pages
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updatePage(model.page)" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-sm-4 hidden-xs">
             <ul class="list-group">
@@ -38,21 +39,21 @@
                     </div>
                 </li>
 
-                <li ng-repeat="website in model.websites" class="list-group-item">
+                <li ng-repeat="page in model.pages" class="list-group-item">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-xs-6">
-                            <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
-                                {{website.name}}
+                            <a href="widget-list.html">
+                                {{page.name}}
                             </a>
                         </div>
                         <div class="col-lg-2 visible-lg">
-                            {{website.created | date : "MMM, dd"}}
+                            {{page.created | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">
-                            {{website.updated | date : "MMM, dd"}}
+                            {{page.updated | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 col-xs-6">
-                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>
@@ -60,28 +61,26 @@
                 </li>
             </ul>
         </div>
-
-
         <div class="col-xs-12 col-sm-8">
             <label for="name">Name</label>
             <input class="form-control"
-                   ng-model="model.website.name"
+                   ng-model="model.page.name"
                    placeholder="facebook"
                    id="name"/>
 
             <label for="description">Description</label>
             <textarea id="description"
-                      ng-model="model.website.description"
+                      ng-model="model.page.description"
                       rows="5"
                       placeholder="So big it is its own country"
                       class="form-control"></textarea>
 
-            <a ng-click="model.updateWebsite(model.website)"
+            <a ng-click="model.updatePage(model.page)"
                class="btn btn-block btn-success">
                 Update
             </a>
 
-            <a ng-click="model.deleteWebsite(model.websiteId)"
+            <a ng-click="model.deletePage(model.pageId)"
                class="btn btn-block btn-danger">
                 Delete
             </a>

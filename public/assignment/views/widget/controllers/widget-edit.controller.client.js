@@ -10,6 +10,8 @@
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
         model.getEditorTemplateUrl = getEditorTemplateUrl;
+        model.updateWidget = updateWidget;
+        model.deleteWidget = deleteWidget;
 
 
         function init() {
@@ -22,5 +24,14 @@
             return templateUrl;
         }
 
+        function updateWidget(widget) {
+            widgetService.updateWidget(model.widgetId, widget);
+            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+        }
+
+        function deleteWidget(widget) {
+            widgetService.deleteWidget(model.widgetId);
+            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+        }
     }
 })();

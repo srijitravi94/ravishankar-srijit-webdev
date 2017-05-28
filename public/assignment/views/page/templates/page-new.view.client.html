@@ -10,7 +10,7 @@
                 New Page
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.createPage(model.page)" class="navbar-link">
+                <a href="" ng-click="model.createPage(model.page)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -53,7 +53,7 @@
                             {{page.updated | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 col-xs-6">
-                            <a href="page-edit.view.client.html">
+                            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>

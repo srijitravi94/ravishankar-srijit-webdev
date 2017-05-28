@@ -11,6 +11,7 @@
         model.widgetType = $routeParams.widgetType;
         model.getEditorTemplateUrl = getEditorTemplateUrl;
         model.goToWidget = goToWidget;
+        model.createWidget = createWidget;
 
         function init() {
             model.widgets = {"widgetType" : model.widgetType};
@@ -25,6 +26,11 @@
 
         function goToWidget(widgetType) {
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType.toLowerCase());
+        }
+        
+        function createWidget(widget) {
+            widgetService.createWidget(model.pageId, widget);
+            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
         }
 
     }

@@ -17,7 +17,10 @@
 
         var api = {
             findWidgetsByPageId : findWidgetsByPageId,
-            findWidgetById : findWidgetById
+            findWidgetById : findWidgetById,
+            createWidget : createWidget,
+            updateWidget : updateWidget,
+            deleteWidget : deleteWidget
         };
 
         return api;
@@ -41,6 +44,31 @@
             }
 
             return null;
+        }
+
+        function createWidget(pageId, widget) {
+            widget.pageId = pageId;
+            widget._id = (new Date()).getTime() + "";
+            widgets.push(widget);
+        }
+
+        function updateWidget(widgetId, widget) {
+            for(var w in widgets) {
+                var wdgt = widgets[w];
+                if(wdgt._id === widgetId) {
+                    widgets[w] = widget;
+                    return angular.copy(widget);
+                }
+            }
+            return null;
+        }
+
+        function deleteWidget(widgetId) {
+            for(var w in widgets) {
+                if(widgets[w]._id === widgetId) {
+                    widgets.splice(w, 1);
+                }
+            }
         }
     }
 })();

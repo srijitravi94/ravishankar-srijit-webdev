@@ -1,7 +1,7 @@
 <div class="wd-widget widget-video">
-    <iframe src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+    <iframe src="{{model.getYouTubeEmbedUrl(widget.url)}}" width="{{widget.width}}" frameborder="0" allowfullscreen></iframe>
     <div class="wd-widget-toolbar wd-widget-youtube-toolbar">
-        <a href="">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
         <span class="glyphicon glyphicon-align-justify"></span>

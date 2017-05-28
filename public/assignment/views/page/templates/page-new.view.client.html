@@ -2,11 +2,11 @@
     <div class="container-fluid row">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                 New Page
             </a>
             <p class="navbar-text pull-right">
@@ -42,7 +42,7 @@
                 <li ng-repeat="page in model.pages" class="list-group-item">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-xs-6">
-                            <a href="widget-list.html">
+                            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                                 {{page.name}}
                             </a>
                         </div>

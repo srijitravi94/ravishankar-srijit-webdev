@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input class="form-control"
+           placeholder="facebook"
+           ng-model="model.widgets.widgetType"
+           value="Image"
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input class="form-control"
+           placeholder="facebook"
+           value="IMAGE"
+           id="text"/>
+
+    <label for="url">URL</label>
+    <input class="form-control"
+           ng-model="model.widgets.url"
+           placeholder="facebook"
+           value="http://www.uefa.com/MultimediaFiles/Photo/competitions/Comp_Matches/01/79/97/64/1799764_w2.jpg"
+           id="url"/>
+
+    <label for="width">Width(%)</label>
+    <input class="form-control"
+           ng-model="model.widgets.width"
+           placeholder="facebook"
+           value="100%"
+           id="width"/>
+
+    <label for="file">Upload</label>
+    <input id="file" multiple type="file" class="form-control"/>
+
+    <a href=""
+       class="btn btn-block btn-primary">Upload Image</a>
+
+</div>

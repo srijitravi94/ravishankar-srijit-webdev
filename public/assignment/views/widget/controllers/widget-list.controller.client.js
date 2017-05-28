@@ -29,7 +29,7 @@
         }
 
         function widgetUrl(widget) {
-            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';
+            var url = 'views/widget/templates/common-content/widget-'+widget.toLowerCase()+'.view.client.html';
             return url;
         }
     }

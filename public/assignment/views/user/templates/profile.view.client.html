@@ -2,11 +2,11 @@
     <div class="container-fluid row">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#!/" class="navbar-link">
+                <a href="#/" class="navbar-link">
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#!/user/{{model.userId}}">
+            <a class="navbar-brand" href="#/user/{{model.userId}}">
                Profile
             </a>
             <p class="navbar-text pull-right">
@@ -17,8 +17,6 @@
         </div>
     </div>
 </nav>
-
-
 
 <div class="container-fluid">
 
@@ -80,7 +78,7 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       href="#!/user/{{model.userId}}/website">My Websites</a>
+       href="#/user/{{model.userId}}/website">My Websites</a>
 
     <a class="btn btn-success btn-block"
        ng-click="model.update(model.user)">Update Profile</a>
@@ -89,7 +87,7 @@
        ng-click="model.deleteUser(model.userId)">Delete Profile</a>
 
     <a class="btn btn-danger btn-block"
-       href="#!/login">Logout</a>
+       href="#/login">Logout</a>
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>

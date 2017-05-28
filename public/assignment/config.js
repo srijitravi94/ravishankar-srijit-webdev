@@ -3,7 +3,9 @@
         .module('WAM')
         .config(configuration);
 
-    function configuration($routeProvider) {
+    function configuration($routeProvider, $locationProvider) {
+
+        $locationProvider.hashPrefix('');
 
         $routeProvider
             .when('/', {
@@ -71,10 +73,20 @@
             })
 
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
-                templateUrl : 'views/widget/templates/widget-chooser.view.client.html'
-                // controller : 'widgetListController',
-                // controllerAs : 'model'
+                templateUrl : 'views/widget/templates/widget-chooser.view.client.html',
+                controller : 'widgetEditController',
+                controllerAs : 'model'
             })
+
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
+                templateUrl : 'views/widget/templates/widget-edit.view.client.html',
+                controller : 'widgetEditController',
+                controllerAs : 'model'
+            })
+
+            .otherwise({
+                redirectTo: '/'
+            });
 
     }
 })();

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid row">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="../templates/widget-list.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="editors/widget-heading-edit.view.client.html">
+                Widget Editor
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="../templates/widget-list.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div ng-include="model.getEditorTemplateUrl(model.widgets.widgetType)"></div>
+
+<div class="container-fluid">
+    <a class="btn btn-block btn-success">Update</a>
+    <a class="btn btn-block btn-danger">Delete</a>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

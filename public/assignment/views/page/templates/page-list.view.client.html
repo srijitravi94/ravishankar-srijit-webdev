@@ -41,7 +41,7 @@
         <li ng-repeat="page in model.pages" class="list-group-item">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-xs-6">
-                    <a href="../../widget/widget-list.html">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                         {{page.name}}
                     </a>
                 </div>
@@ -61,13 +61,4 @@
     </ul>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid navbar-footer">
-        <p class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}" class="navbar-link">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-        </p>
-    </div>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

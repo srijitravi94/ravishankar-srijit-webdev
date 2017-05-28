@@ -39,9 +39,11 @@
         }
 
         function findPageById(pageId) {
-            return pages.find(function (page) {
-                return page._id === pageId;
-            });
+            for (var p in pages) {
+                if(pageId === pages[p]._id) {
+                    return angular.copy(pages[p]);
+                }
+            }
         }
 
         function deletePage(pageId) {

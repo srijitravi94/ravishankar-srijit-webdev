@@ -40,16 +40,19 @@
 
         function findPageById(pageId) {
             for (var p in pages) {
-                if(pageId === pages[p]._id) {
+                if(pages[p]._id === pageId) {
                     return angular.copy(pages[p]);
                 }
             }
+            return null;
         }
 
         function deletePage(pageId) {
-            var page = findPageById(pageId);
-            var index = pages.indexOf(page);
-            pages.splice(index, 1);
+            for(var p in pages) {
+                if(pages[p]._id == pageId) {
+                    pages.splice(p, 1);
+                }
+            }
         }
 
         function updatePage(pageId, newPage) {

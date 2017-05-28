@@ -46,16 +46,19 @@
 
         function findWebsiteById(websiteId) {
             for(var w in websites) {
-                if(websiteId === websites[w]._id) {
+                if(websites[w]._id === websiteId) {
                     return angular.copy(websites[w]);
                 }
             }
+            return null;
         }
 
         function deleteWebsite(websiteId) {
-            var website = findWebsiteById(websiteId);
-            var index = websites.indexOf(website);
-            websites.splice(index, 1);
+            for(var w in websites) {
+                if(websites[w]._id == websiteId) {
+                    websites.splice(w, 1);
+                }
+            }
         }
         
         function updateWebsite(websiteId, newWebsite) {

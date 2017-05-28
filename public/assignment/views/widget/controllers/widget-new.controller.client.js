@@ -1,25 +1,30 @@
 (function () {
     angular
         .module('WAM')
-        .controller('widgetEditController', widgetEditController);
+        .controller('widgetNewController', widgetNewController);
 
-    function widgetEditController($routeParams,$location, widgetService) {
+    function widgetNewController($routeParams, widgetService, $location) {
         var model = this;
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
-        model.widgetId = $routeParams.widgetId;
+        model.widgetType = $routeParams.widgetType;
         model.getEditorTemplateUrl = getEditorTemplateUrl;
-
+        model.goToWidget = goToWidget;
 
         function init() {
-            model.widgets = widgetService.findWidgetById(model.widgetId);
+            model.widgets = {"widgetType" : model.widgetType};
         }
         init();
+
 
         function getEditorTemplateUrl(widget) {
             var templateUrl = 'views/widget/templates/editors/widget-'+widget.toLowerCase()+'-edit.view.client.html';
             return templateUrl;
+        }
+
+        function goToWidget(widgetType) {
+            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType.toLowerCase());
         }
 
     }

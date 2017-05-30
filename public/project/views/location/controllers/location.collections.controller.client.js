@@ -12,7 +12,7 @@
         function init() {
             cityCollections();
         }
-        
+
         return init();
 
         function cityCollections() {
@@ -23,9 +23,9 @@
                     var cityCollections = response.data.collections;
 
                     if(cityCollections != null) {
-                        for(var i=0; i<cityCollections.length; i++) {
-                            collections.push(cityCollections[i].collection);
-                            console.log(collections[i]);
+                        for(var c in cityCollections) {
+                            collections.push(cityCollections[c].collection);
+                            console.log(collections[c]);
                         }
                     } else {
                         console.log('No collections found');

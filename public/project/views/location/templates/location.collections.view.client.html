@@ -12,11 +12,13 @@
 
 <div class="container-fluid">
     <h2 class="collection-result-title">All collections in the city of {{model.city_name}}...</h2>
-    <div ng-repeat="model in model.collections">
+    <div ng-repeat="collection in model.collections">
         <div class="col-md-3 col-sm-6 col-xxs-12">
             <div class="collection-image">
-                <img class="img-responsive" src="{{model.image_url}}" alt="{{model.title}}">
-                <span>{{model.title}}</span>
+                <a ui-sref="index.restaurantCollections({city_name: model.city_name, city_id: model.city_id, collection_id: collection.collection_id})">
+                <img class="img-responsive" ng-src="{{collection.image_url}}" alt="{{collection.title}}">
+                <span>{{collection.title}}</span>
+                </a>
             </div>
         </div>
     </div>

@@ -30,8 +30,9 @@
                   var suggestions = [];
                   var location_suggestions = response.data.location_suggestions;
 
-                  for(var i=0; i<location_suggestions.length; i++) {
-                      suggestions.push(location_suggestions[i]);
+                  for(var l in location_suggestions) {
+                      suggestions.push(location_suggestions[l]);
+                      console.log(location_suggestions[l]);
                   }
                   model.suggestions = suggestions;
               });

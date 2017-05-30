@@ -6,13 +6,13 @@
 
     function locationCollectionsController(apiService, $stateParams) {
         var model = this;
-        model.city_name = $stateParams['city_name'];
-        model.city_id = $stateParams['city_id'];
+        model.city_name = $stateParams.city_name;
+        model.city_id = $stateParams.city_id;
 
         function init() {
             cityCollections();
         }
-
+        
         return init();
 
         function cityCollections() {
@@ -21,13 +21,11 @@
                 .then(function (response) {
                     var collections = [];
                     var cityCollections = response.data.collections;
-                    var a =0;
 
                     if(cityCollections != null) {
                         for(var i=0; i<cityCollections.length; i++) {
-                            collections[a] = cityCollections[i].collection;
-                            console.log(collections[a]);
-                            a++;
+                            collections.push(cityCollections[i].collection);
+                            console.log(collections[i]);
                         }
                     } else {
                         console.log('No collections found');
@@ -36,6 +34,4 @@
                 });
         }
     }
-
-
 })();

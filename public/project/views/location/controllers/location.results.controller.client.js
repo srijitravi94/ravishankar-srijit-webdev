@@ -6,7 +6,7 @@
     function searchLocationController(apiService, $stateParams, $location) {
         var model = this;
         model.search = search;
-        model.location = $stateParams['location'];
+        model.location = $stateParams.location;
 
         function init() {
             searchResults();
@@ -29,12 +29,9 @@
               .then(function (response) {
                   var suggestions = [];
                   var location_suggestions = response.data.location_suggestions;
-                  var a=0;
 
                   for(var i=0; i<location_suggestions.length; i++) {
-                      suggestions[a] = location_suggestions[i];
-                      console.log(suggestions[a])
-                      a++;
+                      suggestions.push(location_suggestions[i]);
                   }
                   model.suggestions = suggestions;
               });

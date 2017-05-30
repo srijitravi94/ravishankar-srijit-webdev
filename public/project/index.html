@@ -9,7 +9,6 @@
     <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
     <link href="css/slideshow.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 
     <title>Bon Appétit</title>
@@ -19,15 +18,26 @@
 <div ui-view="header"></div>
 <div ui-view="content"></div>
 
+
+<!--Common Vendors-->
 <script src="js/vendor/jquery.min.js"></script> <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <script src="js/vendor/bootstrap.min.js"></script> <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script src="js/vendor/angular.min.js"></script> <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 <script src="js/vendor/angular-ui-router.min.js"></script> <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>-->
 <script src="js/vendor/dirPagination.js"></script>
+
+<!--Routes-->
+<script src="app.js"></script>
 <script src="config.js"></script>
-<script src="views/main/controllers/main.controller.js"></script>
-<script src="views/location/controllers/location.results.controller.js"></script>
-<script src="views/location/controllers/location.collections.controller.js"></script>
+<script src="js/script.js"></script>
+
+<!--Controllers-->
+<script src="views/main/controllers/main.controller.client.js"></script>
+<script src="views/location/controllers/location.results.controller.client.js"></script>
+<script src="views/location/controllers/location.collections.controller.client.js"></script>
+
+<!--Services-->
 <script src="services/api.service.client.js"></script>
+
 </body>
 </html>

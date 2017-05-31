@@ -7,7 +7,8 @@
 
         var api ={
             "searchLocation" : searchLocation,
-            "searchCollections" : searchCollections
+            "searchCollections" : searchCollections,
+            "restaurantCollections" : restaurantCollections
         };
 
         var baseUrl = "https://developers.zomato.com/api/v2.1/";
@@ -25,6 +26,11 @@
         function searchCollections(cityId) {
             var searchCollectionsUrl = baseUrl + "collections?city_id=" + cityId + apikey;
             return $http.get(searchCollectionsUrl);
+        }
+
+        function restaurantCollections(cityId,collectionId) {
+            var searchRestaurantUrl = baseUrl + "search?entity_id=" + cityId + "&entity_type=city&collection_id=" +collectionId + apikey;
+            return $http.get(searchRestaurantUrl);
         }
     }
 })();

@@ -1,0 +1,25 @@
+<div class="restaurant-collections-list">
+    <ul class="media-list">
+        <li class="media restaurant-list" dir-paginate="restaurant in model.restaurants | itemsPerPage:5">
+            <div class="col-sm-4">
+                <div class="media-left media-middle">
+                    <img class="media-object img-responsive restaurant-collections-image"
+                         ng-src="{{restaurant.featured_image}}" alt="{{restaurant.name}}">
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="media-body">
+                    <h2 class="media-heading restaurant-name">{{restaurant.name}}</h2>
+                    <span><span class="locality"> Locality &nbsp;</span>: &nbsp; {{restaurant.location.locality}}</span><br>
+                    <span><span class="city"> City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{restaurant.location.city}}</span>
+                    <p>{{tvshow.overview}}</p>
+                </div>
+            </div>
+        </li>
+        <dir-pagination-controls
+                max-size="10"
+                direction-links="true"
+                boundary-links="true">
+        </dir-pagination-controls>
+    </ul>
+</div>

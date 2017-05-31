@@ -71,7 +71,7 @@
 
             //route for restaurants inside a collection
             .state("index.restaurantCollections", {
-                url:":city_name/:city_id/:collection_id",
+                url:":city_name/:city_id/collections/:collection_id",
                 views: {
                     "content@": {
                         templateUrl : "views/collections/templates/restaurants.collections.view.client.html",

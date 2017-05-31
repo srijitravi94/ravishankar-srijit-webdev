@@ -92,9 +92,13 @@
     margin-bottom: 10%;
 }
 
+.login-header-element,
+.register-header-element {
+    margin-right: 20px;
+}
+
 .register-element, .login-element {
     color: #191919;
-    margin-right: 20px;
 }
 
 .register-element:hover,
@@ -203,12 +207,33 @@ a.location-title {
     opacity: 0.8;
 }
 
-@media (min-width: 680px) and (max-width: 767px) {
-    .collection-image {
-        margin-right: 90px;
-    }
+.location-collection-image {
+    width: 100%;
 }
 
+/*Restaurants inside a collection*/
+
+.restaurant-collections-list {
+    margin-top: 100px;
+}
+.restaurant-collections-image {
+    width: 100%;
+    height: 200px;
+}
+
+.restaurant-list, .restaurant-collections-list {
+    margin-bottom: 50px;
+}
+
+.restaurant-name {
+    color: #bb4100;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+.locality, .city {
+    color: #bb4100;
+    font-style: italic;
+}
 .test {
     margin-top: 100px;
 }

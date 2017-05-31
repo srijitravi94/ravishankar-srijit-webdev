@@ -25,7 +25,6 @@
                     if(cityCollections != null) {
                         for(var c in cityCollections) {
                             collections.push(cityCollections[c].collection);
-                            console.log(collections[c]);
                         }
                     } else {
                         console.log('No collections found');

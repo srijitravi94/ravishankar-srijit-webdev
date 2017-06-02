@@ -6,27 +6,51 @@
     function profileController($location, $routeParams, userService) {
 
         var model = this;
-        model.update = update;
+        model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
         model.userId = $routeParams.userId;
 
 
-        model.user = userService.findUserById(model.userId);
+        userService
+            .findUserById(model.userId)
+            .then(renderUser, userError);
 
-        function update(newUser) {
-            var user = userService.updateUser(model.userId, newUser);
+        function renderUser(user) {
+           model.user = user;
+        }
+        
+        function userError( ) {
+            model.error = "User not found"
+        }
 
-            if(user == null) {
-                model.errorMessage = "Unable to update user";
-            } else {
+        function updateUser(user) {
+            userService
+                .updateUser(user._id, user)
+                .then(successMessage, errorMessage);
+
+            function successMessage() {
                 model.successMessage = "User updated successfully";
+            }
+
+            function errorMessage() {
+                model.errorMessage = "Unable to update user";
             }
         }
 
-        function deleteUser(userId) {
-            userService.deleteUser(userId);
-            $location.url('/login');
+        function deleteUser(user) {
+            userService
+                .deleteUser(user._id)
+                .then(deleteSuccess, deleteError);
+
+            function deleteSuccess() {
+                $location.url('/login');
+            }
+
+            function deleteError() {
+                model.deleteError = "Unable to delete the user";
+            }
+
         }
     }
 })();

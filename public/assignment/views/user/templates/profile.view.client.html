@@ -20,6 +20,14 @@
 
 <div class="container-fluid">
 
+    <div class="alert alert-danger" ng-show="model.error">
+        {{model.error}}
+    </div>
+
+    <div class="alert alert-danger" ng-show="model.deleteError">
+        {{model.deleteError}}
+    </div>
+
     <div class="alert alert-danger" ng-show="model.errorMessage">
         {{model.errorMessage}}
     </div>
@@ -81,10 +89,10 @@
        href="#/user/{{model.userId}}/website">My Websites</a>
 
     <a class="btn btn-success btn-block"
-       ng-click="model.update(model.user)">Update Profile</a>
+       ng-click="model.updateUser(model.user)">Update Profile</a>
 
     <a class="btn btn-danger btn-block"
-       ng-click="model.deleteUser(model.userId)">Delete Profile</a>
+       ng-click="model.deleteUser(model.user)">Delete Profile</a>
 
     <a class="btn btn-danger btn-block"
        href="#/login">Logout</a>

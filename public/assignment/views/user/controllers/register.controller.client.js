@@ -35,20 +35,28 @@
                 return;
             }
 
-            var found = userService.findUserByUsername(username);
-
-            if(found !== null) {
+            userService
+                .findUserByUsername(username)
+                .then(ifFound, ifNotFound);
+            
+            function ifFound() {
                 model.error = "Sorry, that username is taken";
-            } else {
+            }
+            
+            function ifNotFound() {
                 var newUser = {
                     username : username,
                     firstName : firstName,
                     lastName : lastName,
                     password : password
                 };
-                newUser = userService.createUser(newUser);
-                $location.url('/user/' +newUser._id);
+                return userService
+                    .createUser(newUser)
+                    .then(function (user) {
+                        $location.url('/user/' +user._id);
+                    });
             }
+
         }
     }
 })();

@@ -20,11 +20,17 @@
                 return;
             }
 
-            var found = userService.findUserByCredentials(username, password);
+            userService
+                .findUserByCredentials(username, password)
+                .then(foundUser, notFound);
 
-            if(found !== null) {
-                $location.url('/user/'  +found._id);
-            } else {
+            function foundUser(found) {
+                if(found !== null) {
+                    $location.url('/user/'  +found._id);
+                }
+            }
+
+            function notFound(error) {
                 model.error = "Sorry " +username+ " not found or the password doesn't match. Please try again";
             }
         }

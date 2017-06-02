@@ -84,7 +84,7 @@ function updateUser(req, res) {
 function deleteUser(req, res) {
     var userId = req.params.userId;
     for(var u in users) {
-        if(users[u]._id == userId) {
+        if(users[u]._id === userId) {
             users.splice(u, 1);
             res.sendStatus(200);
             return;

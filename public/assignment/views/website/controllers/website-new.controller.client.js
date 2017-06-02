@@ -9,14 +9,33 @@
         model.createWebsite = createWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesByUser(model.userId);
+            websiteService
+                .findAllWebsitesByUser(model.userId)
+                .then(renderWebsiteList, renderWebsiteListError);
         }
         init();
 
+        function renderWebsiteList(websites) {
+            model.websites = websites;
+        }
+
+        function renderWebsiteListError() {
+            model.error = "Sorry, unable to retrieve the websites";
+        }
+
         function createWebsite(website) {
             website.developerId = model.userId;
-            websiteService.createWebsite(website);
+            websiteService
+                .createWebsite(website, model.userId)
+                .then(websiteCreateSuccess, websiteCreateError);
+        }
+
+        function websiteCreateSuccess() {
             $location.url('/user/'+model.userId+'/website');
+        }
+
+        function websiteCreateError() {
+            model.errorWebsiteCreate = "Sorry, unable to create new website"
         }
     }
 })();

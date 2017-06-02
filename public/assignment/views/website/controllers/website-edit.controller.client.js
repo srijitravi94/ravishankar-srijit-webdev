@@ -11,20 +11,61 @@
         model.updateWebsite = updateWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesByUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesByUser(model.userId)
+                .then(renderWebsiteList, renderWebsiteListError);
+
+            function renderWebsiteList(websites) {
+                model.websites = websites;
+            }
+
+            function renderWebsiteListError() {
+                model.errorWebsites = "Sorry, unable to retrieve the websites";
+            }
+
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(renderWebsite, renderWebsiteError);
+
+            function renderWebsite(website) {
+                model.website = website;
+            }
+
+            function renderWebsiteError() {
+                model.errorWebsite = "Sorry, unable to retrieve the website";
+            }
         }
         init();
 
-        function deleteWebsite(website) {
-            websiteService.deleteWebsite(model.websiteId);
-            $location.url('/user/'+model.userId+'/website');
-        }
 
         function updateWebsite(newWebsite) {
-            websiteService.updateWebsite(model.websiteId, newWebsite);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .updateWebsite(model.websiteId, newWebsite)
+                .then(updateSuccess, updateError);
+
+            function updateSuccess() {
+                $location.url('/user/'+model.userId+'/website');
+            }
+            
+            function updateError() {
+                model.errorUpdate = "Sorry, unable to update the website";
+            }
         }
+
+        function deleteWebsite(website) {
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(deleteSuccess, deleteError);
+
+            function deleteSuccess() {
+                $location.url('/user/'+model.userId+'/website');
+            }
+
+            function deleteError() {
+                model.errorDelete = "Sorry, unable to delete the website";
+            }
+        }
+
     }
 
 })();

@@ -13,7 +13,17 @@
         model.widgetUrl = widgetUrl;
 
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(renderWidgetList, renderWidgetListError);
+
+            function renderWidgetList(widgets) {
+                model.widgets = widgets;
+            }
+
+            function renderWidgetListError() {
+                model.error = "Sorry, unable to retrieve widgets";
+            }
         }
         init();
 

@@ -20,6 +20,11 @@
     </div>
 </nav>
 
+<div class="container-fluid">
+    <div class="alert alert-danger" ng-show="model.errorWidgetCreate">
+        {{model.errorWidgetCreate}}
+    </div>
+</div>
 
 <div ng-include="model.getEditorTemplateUrl(model.widgets.widgetType)"></div>
 

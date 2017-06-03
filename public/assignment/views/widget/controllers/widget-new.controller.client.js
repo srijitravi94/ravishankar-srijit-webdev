@@ -29,8 +29,17 @@
         }
         
         function createWidget(widget) {
-            widgetService.createWidget(model.pageId, widget);
+            widgetService
+                .createWidget(model.pageId, widget)
+                .then(createWidgetSuccess, createWidgetError);
+        }
+
+        function createWidgetSuccess() {
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+        }
+
+        function createWidgetError() {
+            model.errorWidgetCreate = "Sorry, unable to create widget";
         }
 
     }

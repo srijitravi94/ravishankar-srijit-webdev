@@ -19,6 +19,11 @@
 </nav>
 
 <div class="container-fluid">
+
+    <div class="alert alert-danger" ng-show="model.error">
+        {{model.error}}
+    </div>
+
     <div ng-repeat="widget in model.widgets">
         <div ng-include="model.widgetUrl(widget.widgetType)"></div>
     </div>

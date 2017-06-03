@@ -10,7 +10,17 @@
 
 
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(renderPageList, renderPageListError);
+
+            function renderPageList(pages) {
+                model.pages = pages;
+            }
+
+            function renderPageListError() {
+                model.error = "Sorry, unable to retrieve the pages";
+            }
         }
         init();
 

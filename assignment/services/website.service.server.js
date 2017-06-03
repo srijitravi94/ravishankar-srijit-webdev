@@ -39,7 +39,6 @@ function findWebsiteById(req, res) {
         }
     }
     res.sendStatus(404);
-    return;
 }
 
 function createWebsite(req, res) {

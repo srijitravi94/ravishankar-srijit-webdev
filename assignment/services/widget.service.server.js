@@ -10,12 +10,21 @@ var widgets = [
     { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
 
-app.get('/api/assignment/page/:pageId/widget', findAllWidgetsForPage);
 app.post('/api/assignment/page/:pageId/widget', createWidget);
+app.get('/api/assignment/page/:pageId/widget', findAllWidgetsForPage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
 
+
+function createWidget(req, res) {
+    var pageId = req.params.pageId;
+    var widget = req.body;
+    widget.pageId = pageId;
+    widget._id = (new Date()).getTime() + "";
+    widgets.push(widget);
+    res.json(widget);
+}
 
 function findAllWidgetsForPage(req, res) {
     var results = [];
@@ -27,15 +36,6 @@ function findAllWidgetsForPage(req, res) {
         }
     }
     res.json(results);
-}
-
-function createWidget(req, res) {
-    var pageId = req.params.pageId;
-    var widget = req.body;
-    widget.pageId = pageId;
-    widget._id = (new Date()).getTime() + "";
-    widgets.push(widget);
-    res.json(widget);
 }
 
 function findWidgetById(req, res) {

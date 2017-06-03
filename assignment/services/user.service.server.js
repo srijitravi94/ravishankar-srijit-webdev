@@ -7,12 +7,20 @@ var users = [
     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi", email: "jannunzi@gmail.com" }
 ];
 
-app.get('/api/assignment/user', findAllUsers);
 app.post('/api/assignment/user', createUser);
+app.get('/api/assignment/user', findAllUsers);
 app.get('/api/assignment/user/:userId', findUserById);
 app.put('/api/assignment/user/:userId',updateUser);
 app.delete('/api/assignment/user/:userId',deleteUser);
 
+
+
+function createUser(req, res) {
+    var newUser = req.body;
+    newUser._id = (new Date()).getTime() + "";
+    users.push(newUser);
+    res.json(newUser)
+}
 
 function findAllUsers (req, res) {
     var username = req.query.username;
@@ -47,14 +55,6 @@ function findAllUsers (req, res) {
         res.send(users);
     }
 }
-
-function createUser(req, res) {
-    var newUser = req.body;
-    newUser._id = (new Date()).getTime() + "";
-    users.push(newUser);
-    res.json(newUser)
-}
-
 
 function findUserById(req, res) {
     var userId = req.params.userId;

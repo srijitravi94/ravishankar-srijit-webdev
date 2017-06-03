@@ -6,11 +6,19 @@ var pages = [
     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
 ];
 
-app.get('/api/assignment/website/:websiteId/page', findAllPagesForWebsite);
 app.post('/api/assignment/website/:websiteId/page', createPage);
+app.get('/api/assignment/website/:websiteId/page', findAllPagesForWebsite);
 app.get('/api/assignment/page/:pageId', findPageById);
 app.put('/api/assignment/page/:pageId', updatePage);
 app.delete('/api/assignment/page/:pageId', deletePage);
+
+
+function createPage(req, res) {
+    var page = req.body;
+    page._id = (new Date()).getTime() + "";
+    pages.push(page);
+    res.json(page);
+}
 
 function findAllPagesForWebsite(req, res) {
     var websiteId = req.params.websiteId;
@@ -22,13 +30,6 @@ function findAllPagesForWebsite(req, res) {
         }
     }
     res.json(results);
-}
-
-function createPage(req, res) {
-    var page = req.body;
-    page._id = (new Date()).getTime() + "";
-    pages.push(page);
-    res.json(page);
 }
 
 function findPageById(req, res) {

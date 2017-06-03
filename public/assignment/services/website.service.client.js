@@ -6,11 +6,11 @@
     function websiteService($http) {
 
         var api = {
+            createWebsite : createWebsite,
             findAllWebsitesByUser : findAllWebsitesByUser,
             findWebsiteById : findWebsiteById,
-            deleteWebsite : deleteWebsite,
-            createWebsite : createWebsite,
-            updateWebsite : updateWebsite
+            updateWebsite : updateWebsite,
+            deleteWebsite : deleteWebsite
         };
         return api;
 

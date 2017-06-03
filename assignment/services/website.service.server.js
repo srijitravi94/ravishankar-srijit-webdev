@@ -10,12 +10,19 @@ var websites = [
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 ];
 
+app.post('/api/assignment/user/:userId/website', createWebsite);
 app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
 app.get('/api/assignment/website/:websiteId', findWebsiteById);
-app.post('/api/assignment/user/:userId/website', createWebsite);
 app.put('/api/assignment/website/:websiteId', updateWebsite);
 app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
+
+function createWebsite(req, res) {
+    var website = req.body;
+    website._id = (new Date()).getTime() + "";
+    websites.push(website);
+    res.json(website);
+}
 
 function findAllWebsitesForUser(req, res) {
     var userId = req.params.userId;
@@ -39,13 +46,6 @@ function findWebsiteById(req, res) {
         }
     }
     res.sendStatus(404);
-}
-
-function createWebsite(req, res) {
-    var website = req.body;
-    website._id = (new Date()).getTime() + "";
-    websites.push(website);
-    res.json(website);
 }
 
 function updateWebsite(req, res) {

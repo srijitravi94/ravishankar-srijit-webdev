@@ -5,7 +5,7 @@
 
     function wbdvSortable() {
         function sort(scope, element, attributes) {
-            element.sortable({axis: 'y'});
+            element.sortable({axis: 'y', handle: '.handle'});
         }
 
         return {

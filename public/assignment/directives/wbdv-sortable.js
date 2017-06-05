@@ -5,11 +5,16 @@
 
     function wbdvSortable() {
         function sort(scope, element, attributes) {
-            element.sortable({axis: 'y', handle: '.handle'});
+
+            element
+                .sortable({
+                    axis: 'y',
+                    handle: '.handle'
+                });
         }
 
         return {
             link: sort
-        };
+        }
     }
 })();

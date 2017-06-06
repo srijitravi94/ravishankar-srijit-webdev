@@ -1,6 +1,6 @@
 <div ng-switch="widget.size">
     <div class="wd-widget">
-        <div class="wd-widget-toolbar">
+        <div class="wd-widget-toolbar" ng-show="widget.text">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>

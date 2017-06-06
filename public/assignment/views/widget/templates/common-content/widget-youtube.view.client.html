@@ -1,4 +1,4 @@
-<div class="wd-widget widget-video">
+<div class="wd-widget widget-video" ng-show="widget.url">
     <iframe src="{{model.getYouTubeEmbedUrl(widget.url)}}" width="{{widget.width}}" frameborder="0" allowfullscreen></iframe>
     <div class="wd-widget-toolbar wd-widget-youtube-toolbar">
         <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">

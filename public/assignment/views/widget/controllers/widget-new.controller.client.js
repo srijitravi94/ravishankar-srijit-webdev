@@ -8,10 +8,11 @@
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
+        model.widgetId = $routeParams.widgetId;
         model.widgetType = $routeParams.widgetType;
         model.getEditorTemplateUrl = getEditorTemplateUrl;
         model.goToWidget = goToWidget;
-        model.createWidget = createWidget;
+        model.updateWidget = updateWidget;
 
         function init() {
             model.widgets = {"widgetType" : model.widgetType};
@@ -25,21 +26,41 @@
         }
 
         function goToWidget(widgetType) {
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType.toLowerCase());
-        }
-        
-        function createWidget(widget) {
+            var widget={
+                widgetType : widgetType
+            };
+
             widgetService
                 .createWidget(model.pageId, widget)
-                .then(createWidgetSuccess, createWidgetError);
+                .then(function (widget) {
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType.toLowerCase()+ "/" +widget._id);
+                });
         }
 
-        function createWidgetSuccess() {
+
+        function updateWidget(widget) {
+            var widgets ={
+                _id        : model.widgetId,
+                pageId     : model.pageId,
+                name       : widget.name,
+                text       : widget.text,
+                size       : widget.size,
+                width      : widget.width,
+                url        : widget.url,
+                widgetType : widget.widgetType
+            };
+
+            widgetService
+                .updateWidget(model.widgetId, widgets)
+                .then(updateSuccess, updateError);
+        }
+
+        function updateSuccess() {
             $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
         }
 
-        function createWidgetError() {
-            model.errorWidgetCreate = "Sorry, unable to create widget";
+        function updateError() {
+            model.errorWidgetCreate = "Sorry, unable to create the widget";
         }
 
     }

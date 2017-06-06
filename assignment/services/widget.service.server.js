@@ -117,14 +117,27 @@ function getWidgetById(widgetId) {
 
 
 function sortWidget(req, res) {
-    var start = req.query.start;
-    var end = req.query.end;
+    var start  = req.query.start;
+    var end    = req.query.end;
     var pageId = req.params.pageId;
+
+    var newWidget = [];
 
     for(var w in widgets) {
         if(widgets[w].pageId === pageId) {
-            widgets.splice(end-1, 0, widgets.splice(start-1, 1)[0]);
+            newWidget.push(widgets[w]);
         }
+    }
+
+    for(var w in newWidget) {
+        var index = widgets.indexOf(newWidget[w]);
+        widgets.splice(index,1);
+    }
+
+    newWidget.splice(end-1, 0, newWidget.splice(start-1 ,1)[0]);
+
+    for (var w in newWidget){
+        widgets.push(newWidget[w]);
     }
 
 }

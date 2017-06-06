@@ -90,6 +90,12 @@
                 controllerAs : 'model'
             })
 
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/search', {
+                templateUrl : 'views/widget/templates/widget-flickr-search.view.client.html',
+                controller : 'flickrController',
+                controllerAs : 'model'
+            })
+
             .otherwise({
                 templateUrl : 'views/user/templates/login.view.client.html',
                 controller : 'loginController',

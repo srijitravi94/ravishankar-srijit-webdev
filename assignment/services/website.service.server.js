@@ -1,13 +1,13 @@
 var app = require('../../express');
 
 var websites = [
-    { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
-    { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
-    { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem" },
-    { "_id": "890", "name": "Go",          "developerId": "123", "description": "Lorem" },
-    { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem" },
-    { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem" },
-    { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
+    { "_id": "123", "name": "Facebook",    "created" : "2017-06-06", "developerId": "456", "description": "Lorem" },
+    { "_id": "234", "name": "Tweeter",     "created" : "2017-06-05", "developerId": "456", "description": "Lorem" },
+    { "_id": "456", "name": "Gizmodo",     "created" : "2017-06-04", "developerId": "456", "description": "Lorem" },
+    { "_id": "890", "name": "Go",          "created" : "2017-06-06", "developerId": "123", "description": "Lorem" },
+    { "_id": "567", "name": "Tic Tac Toe", "created" : "2017-06-05", "developerId": "123", "description": "Lorem" },
+    { "_id": "678", "name": "Checkers",    "created" : "2017-06-04", "developerId": "123", "description": "Lorem" },
+    { "_id": "789", "name": "Chess",       "created" : "2017-06-03", "developerId": "234", "description": "Lorem" }
 ];
 
 app.post('/api/assignment/user/:userId/website', createWebsite);
@@ -20,6 +20,7 @@ app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 function createWebsite(req, res) {
     var website = req.body;
     website._id = (new Date()).getTime() + "";
+    website.created = new Date();
     websites.push(website);
     res.json(website);
 }
@@ -51,6 +52,8 @@ function findWebsiteById(req, res) {
 function updateWebsite(req, res) {
     var websiteId = req.params.websiteId;
     var website = req.body;
+
+    website.updated = new Date();
     for(var w in websites) {
         if(websites[w]._id === websiteId) {
             websites[w] = website;

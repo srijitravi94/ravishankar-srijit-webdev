@@ -20,6 +20,7 @@ app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
 app.post ('/api/assignment/upload', upload.single('myFile'), uploadImage);
+app.put ('/api/assignment/page/:pageId/widget', sortWidget);
 
 
 function createWidget(req, res) {
@@ -80,6 +81,7 @@ function deleteWidget(req, res) {
     res.sendStatus(404);
 }
 
+
 function uploadImage(req, res) {
     var widgetId = req.body.widgetId;
     var width = req.body.width;
@@ -111,4 +113,18 @@ function getWidgetById(widgetId) {
             return widgets[w];
         }
     }
+}
+
+
+function sortWidget(req, res) {
+    var start = req.query.start;
+    var end = req.query.end;
+    var pageId = req.params.pageId;
+
+    for(var w in widgets) {
+        if(widgets[w].pageId === pageId) {
+            widgets.splice(end-1, 0, widgets.splice(start-1, 1)[0]);
+        }
+    }
+
 }

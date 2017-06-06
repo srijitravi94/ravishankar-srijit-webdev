@@ -10,7 +10,8 @@
             findAllWidgetsForPage : findAllWidgetsForPage,
             findWidgetById : findWidgetById,
             updateWidget : updateWidget,
-            deleteWidget : deleteWidget
+            deleteWidget : deleteWidget,
+            sortWidget : sortWidget
         };
 
         return api;
@@ -53,6 +54,11 @@
                 .then(function (response) {
                    return response.data;
                 });
+        }
+
+        function sortWidget(start, end, pageId) {
+            var url = "/api/assignment/page/" +pageId+ "/widget?start=" +start+ "&end=" +end;
+            $http.put(url);
         }
 
     }

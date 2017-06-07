@@ -8,7 +8,8 @@
         var api ={
             "searchLocation" : searchLocation,
             "searchCollections" : searchCollections,
-            "restaurantCollections" : restaurantCollections
+            "restaurantCollections" : restaurantCollections,
+            "searchRestaurants" : searchRestaurants
         };
 
         var baseUrl = "https://developers.zomato.com/api/v2.1/";
@@ -19,18 +20,23 @@
 
 
         function searchLocation(location) {
-            var searchLocationUrl = baseUrl + "locations?query=" + location + "&count=10" + apikey;
-            return $http.get(searchLocationUrl);
+            var url = baseUrl + "locations?query=" + location + "&count=10" + apikey;
+            return $http.get(url);
         }
         
         function searchCollections(cityId) {
-            var searchCollectionsUrl = baseUrl + "collections?city_id=" + cityId + apikey;
-            return $http.get(searchCollectionsUrl);
+            var url = baseUrl + "collections?city_id=" + cityId + apikey;
+            return $http.get(url);
         }
 
         function restaurantCollections(cityId,collectionId) {
-            var searchRestaurantUrl = baseUrl + "search?entity_id=" + cityId + "&entity_type=city&collection_id=" +collectionId + apikey;
-            return $http.get(searchRestaurantUrl);
+            var url = baseUrl + "search?entity_id=" + cityId + "&entity_type=city&collection_id=" +collectionId + apikey;
+            return $http.get(url);
+        }
+
+        function searchRestaurants(cityId, restaurant) {
+            var url = baseUrl + "search?entity_id=" + cityId + "&entity_type=city&q=" + restaurant + apikey;
+            return $http.get(url);
         }
     }
 })();

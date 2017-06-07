@@ -213,19 +213,21 @@ a.location-title {
 
 /*Restaurants inside a collection*/
 
-.restaurant-collections-list {
+.restaurant-collections-list, .restaurant-search-list{
     margin-top: 100px;
 }
-.restaurant-collections-image {
+
+.restaurant-collections-image, .restaurant-search-image {
     width: 100%;
     height: 200px;
 }
 
-.restaurant-list, .restaurant-collections-list {
+.restaurant-list, .restaurant-collections-list, .restaurant-search-list {
     margin-bottom: 50px;
 }
 
 .restaurant-name {
+    margin-top: 20px;
     color: #bb4100;
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
@@ -234,6 +236,7 @@ a.location-title {
     color: #bb4100;
     font-style: italic;
 }
+
 .test {
     margin-top: 100px;
 }

@@ -11,8 +11,7 @@
         function init() {
             searchResults();
         }
-
-        return init();
+        init();
 
         function search(location) {
             if (location) {

@@ -6,26 +6,24 @@
 
     function restaurantCollectionsController(apiService, $stateParams) {
         var model = this;
-        model.city_name = $stateParams.city_name;
-        model.city_id = $stateParams.city_id;
-        model.collection_id = $stateParams.collection_id;
+        model.cityName = $stateParams.cityName;
+        model.cityId = $stateParams.cityId;
+        model.collectionId = $stateParams.collectionId;
 
         function init() {
             collections();
         }
-
-        return init();
+        init();
 
         function collections() {
             apiService
-                .restaurantCollections(model.city_id, model.collection_id)
+                .restaurantCollections(model.cityId, model.collectionId)
                 .then(function (response) {
                     var restaurants = [];
                     var restaurantCollections = response.data.restaurants;
 
                     for(var r in restaurantCollections) {
                         restaurants.push(restaurantCollections[r].restaurant);
-                        console.log(restaurants[r]);
                     }
                     model.restaurants = restaurants;
                 });

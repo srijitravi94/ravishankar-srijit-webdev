@@ -59,7 +59,7 @@
 
             //route for collections in a location
             .state("index.collections", {
-                url:":city_name/:city_id",
+                url:":cityName/:cityId",
                 views: {
                     "content@": {
                         templateUrl : "views/location/templates/location.collections.view.client.html",
@@ -71,11 +71,23 @@
 
             //route for restaurants inside a collection
             .state("index.restaurantCollections", {
-                url:":city_name/:city_id/collections/:collection_id",
+                url:":cityName/:cityId/collections/:collectionId/restaurants",
                 views: {
                     "content@": {
                         templateUrl : "views/collections/templates/restaurants.collections.view.client.html",
                         controller: "restaurantCollectionsController",
+                        controllerAs: "model"
+                    }
+                }
+            })
+
+            //route for search results for restaurants
+            .state("index.restaurantSearch", {
+                url : ":cityName/:cityId/restaurants/search/:restaurant",
+                views: {
+                    "content@": {
+                        templateUrl: "views/restaurants/templates/restaurant.results.view.client.html",
+                        controller: "searchRestaurantController",
                         controllerAs: "model"
                     }
                 }

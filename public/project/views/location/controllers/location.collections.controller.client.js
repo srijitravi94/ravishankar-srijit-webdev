@@ -4,20 +4,20 @@
         .controller("locationCollectionsController",locationCollectionsController);
 
 
-    function locationCollectionsController(apiService, $stateParams) {
+    function locationCollectionsController(apiService, $stateParams, $location) {
         var model = this;
-        model.city_name = $stateParams.city_name;
-        model.city_id = $stateParams.city_id;
+        model.cityName = $stateParams.cityName;
+        model.cityId = $stateParams.cityId;
+        model.searchRestaurant = searchRestaurant;
 
         function init() {
             cityCollections();
         }
-
-        return init();
+        init();
 
         function cityCollections() {
             apiService
-                .searchCollections(model.city_id)
+                .searchCollections(model.cityId)
                 .then(function (response) {
                     var collections = [];
                     var cityCollections = response.data.collections;
@@ -31,6 +31,14 @@
                     }
                     model.collections = collections;
                 });
+        }
+
+        function searchRestaurant(restaurant) {
+            if(restaurant) {
+                $location.url(model.cityName+ "/" +model.cityId+ "/restaurants/search/" +restaurant);
+            } else {
+                return;
+            }
         }
     }
 })();

@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <ul class="media-list">
         <li class="media" dir-paginate="suggestion in model.suggestions | itemsPerPage:5">
-            <h4 class="media-heading"><a class="location-title" ui-sref="index.collections({city_name: suggestion.city_name, city_id: suggestion.city_id})">{{suggestion.title}}</a></h4>
+            <h4 class="media-heading"><a class="location-title" ui-sref="index.collections({cityName: suggestion.city_name, cityId: suggestion.city_id})">{{suggestion.title}}</a></h4>
             <span class=""> <span class="content">Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{suggestion.entity_type | uppercase}}<br></span>
             <span class=""> <span class="content">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{suggestion.city_name}}<br></span>
             <span class=""> <span class="content">Country &nbsp;</span>: &nbsp; {{suggestion.country_name}}<br></span>

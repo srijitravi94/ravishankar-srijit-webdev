@@ -3,13 +3,14 @@
         <li class="media restaurant-list" dir-paginate="restaurant in model.restaurants | itemsPerPage:5">
             <div class="col-sm-4">
                 <div class="media-left media-middle">
+                    <a ui-sref="index.restaurantDetails({cityName : model.cityName, cityId : model.cityId, restaurantId : restaurant.id})">
                     <img class="media-object img-responsive restaurant-search-image"
-                         ng-src="{{restaurant.featured_image}}" alt="{{restaurant.name}}">
+                         ng-src="{{restaurant.featured_image}}" alt="{{restaurant.name}}"></a>
                 </div>
             </div>
             <div class="col-sm-8">
                 <div class="media-body restaurant-details">
-                    <h2 class="media-heading restaurant-name">{{restaurant.name}}</h2>
+                    <h2 class="restaurant-name media-heading"><a class="restaurant-name" ui-sref="index.restaurantDetails({cityName : model.cityName, cityId : model.cityId, restaurantId : restaurant.id})">{{restaurant.name}}</a></h2>
                     <span><span class="locality"> Locality &nbsp;</span>: &nbsp; {{restaurant.location.locality}}</span><br>
                     <span><span class="city"> City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>: &nbsp; {{restaurant.location.city}}</span>
                 </div>

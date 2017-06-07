@@ -91,7 +91,20 @@
                         controllerAs: "model"
                     }
                 }
+            })
+
+            //route for restaurant details page
+            .state("index.restaurantDetails", {
+                url : ":cityName/:cityId/restaurant/:restaurantId",
+                views: {
+                    "content@": {
+                        templateUrl: "views/restaurants/templates/restaurant.details.view.client.html",
+                        controller: "restaurantDetailsController",
+                        controllerAs: "model"
+                    }
+                }
             });
+
 
         $urlRouterProvider.otherwise("/");
 

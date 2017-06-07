@@ -6,6 +6,7 @@
     function searchRestaurantController(apiService, $stateParams) {
         var model = this;
         model.restaurant = $stateParams.restaurant;
+        model.cityName = $stateParams.cityName;
         model.cityId = $stateParams.cityId;
 
         function init() {

@@ -4,8 +4,13 @@
             <div class="col-sm-4">
                 <div class="media-left media-middle">
                     <a ui-sref="index.restaurantDetails({cityName : model.cityName, cityId : model.cityId, restaurantId : restaurant.id})">
+                        <img ng-hide="restaurant.featured_image === ''"
+                             class="media-object img-responsive restaurant-search-image"
+                             ng-src="{{restaurant.featured_image}}" alt="{{restaurant.name}}">
                         <img class="media-object img-responsive restaurant-search-image"
-                             ng-src="{{restaurant.featured_image}}" alt="{{restaurant.name}}"></a>
+                             ng-show="restaurant.featured_image === ''"
+                             ng-src="https://digital-photography-school.com/wp-content/uploads/2016/06/Rachel-Korinek-Food-Photographer-DPS-Hero-Angle-12.jpg"
+                             alt="{{restaurant.name}}"></a>
                 </div>
             </div>
             <div class="col-sm-8">

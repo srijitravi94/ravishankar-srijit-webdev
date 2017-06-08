@@ -14,7 +14,13 @@
     <div class="col-sm-4">
         <div class="media-left media-middle">
             <img class="restaurant-image media-object img-responsive"
-                 ng-src="{{model.restaurantDetails.featured_image}}" alt="{{model.restaurantDetails.name}}">
+                 ng-hide="model.restaurantDetails.featured_image === ''"
+                 ng-src="{{model.restaurantDetails.featured_image}}"
+                 alt="{{model.restaurantDetails.name}}">
+            <img class="restaurant-image media-object img-responsive"
+                 ng-show="model.restaurantDetails.featured_image === ''"
+                 ng-src="https://digital-photography-school.com/wp-content/uploads/2016/06/Rachel-Korinek-Food-Photographer-DPS-Hero-Angle-12.jpg"
+                 alt="{{restaurant.name}}">
         </div>
     </div>
     <div class="col-sm-8">

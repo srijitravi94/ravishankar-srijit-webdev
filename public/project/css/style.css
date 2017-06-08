@@ -232,7 +232,7 @@ a.location-title {
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 
-.locality, .city {
+.content {
     color: #bb4100;
     font-style: italic;
 }
@@ -256,6 +256,29 @@ a.location-title {
     }
 }
 
-.test {
-    margin-top: 100px;
+.restaurant-image {
+    margin-top: 30px;
+    width: 100%;
+    height: 250px;
 }
+
+.restaurant-details-page{
+    margin-top: 30px;
+}
+
+.restaurant-cuisines {
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+.label-as-badge {
+    background-color: #bb4100;
+}
+
+div.restaurant-cost {
+    margin-top: 30px;
+}
+
+a.restaurant-menu {
+    color: #bb4100;
+}
+

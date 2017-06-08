@@ -3,8 +3,9 @@
         .module('BonAppetit')
         .config(configuration);
 
-    function configuration($stateProvider, $urlRouterProvider,$locationProvider) {
+    function configuration($stateProvider, $urlRouterProvider,$locationProvider, $qProvider) {
 
+        $qProvider.errorOnUnhandledRejections(false);
         $locationProvider.hashPrefix("");
 
         $stateProvider

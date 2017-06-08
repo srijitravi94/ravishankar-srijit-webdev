@@ -244,6 +244,18 @@ a.location-title {
     color: #bb4100;
 }
 
+/*Restaurant Details*/
+
+.restaurant-details {
+    margin-top: 80px;
+}
+
+@media (max-width: 767px) {
+    .restaurant-details {
+        margin-top: 60px;
+    }
+}
+
 .test {
     margin-top: 100px;
 }

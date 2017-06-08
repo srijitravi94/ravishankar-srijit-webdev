@@ -1,1 +1,11 @@
-<h1 class="test">{{model.restaurantId}}</h1>
+<div class="restaurant-details" ng-hide="model.restaurantDetails.location.latitude === '0.0000000000'">
+    <ng-map center="{{model.restaurantDetails.location.latitude}}, {{model.restaurantDetails.location.longitude}}">
+        <marker position="{{model.restaurantDetails.location.latitude}}, {{model.restaurantDetails.location.longitude}}"></marker>
+    </ng-map>
+</div>
+
+<div class="restaurant-details" ng-hide="model.restaurantDetails.location.latitude !== '0.0000000000'">
+    <ng-map center="{{model.restaurantDetails.location.address}}">
+        <marker position="{{model.restaurantDetails.location.address}}"></marker>
+    </ng-map>
+</div>

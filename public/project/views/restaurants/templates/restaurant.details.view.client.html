@@ -37,7 +37,7 @@
             <div class="restaurant-locality"><span class="content">Locality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>:&nbsp;&nbsp; {{model.restaurantDetails.location.locality}}</div>
             <div class="restaurant-city"><span class="content">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>:&nbsp;&nbsp; {{model.restaurantDetails.location.city}}</div>
             <div class="restaurant-address"><span class="content">Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>:&nbsp;&nbsp; {{model.restaurantDetails.location.address}}</div><br><br>
-            <a ng-if="model.restaurantDetails.name" class="restaurant-menu" href="{{model.restaurantDetails.menu_url}}" target="_blank">Checkout the menu for {{model.restaurantDetails.name}}</a>
+            <div class="restaurant-menu"><a ng-if="model.restaurantDetails.name" class="restaurant-menu" href="{{model.restaurantDetails.menu_url}}" target="_blank">Checkout the menu for {{model.restaurantDetails.name}}</a></div>
         </div>
     </div>
 </div>

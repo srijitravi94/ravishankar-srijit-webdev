@@ -106,7 +106,6 @@
                 }
             });
 
-
         $urlRouterProvider.otherwise("/");
 
     }

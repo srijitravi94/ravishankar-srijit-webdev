@@ -21,11 +21,12 @@
                     var restaurants = [];
                     var restaurantResults = response.data.restaurants;
 
+                    console.log(response);
+
                     for(var r in restaurantResults) {
                         restaurants.push(restaurantResults[r].restaurant);
                     }
                     model.restaurants = restaurants;
-                    console.log(model.restaurants);
                 });
         }
     }

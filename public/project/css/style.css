@@ -280,5 +280,10 @@ div.restaurant-cost {
 
 a.restaurant-menu {
     color: #bb4100;
+
+}
+
+.restaurant-menu {
+    margin-bottom: 80px;
 }
 

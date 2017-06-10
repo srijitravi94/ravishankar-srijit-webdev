@@ -25,9 +25,8 @@
         init();
 
         function createPage(page) {
-            page.websiteId = model.websiteId;
             pageService
-                .createPage(page)
+                .createPage(page, model.websiteId)
                 .then(pageCreateSuccess, pageCreateError);
         }
 

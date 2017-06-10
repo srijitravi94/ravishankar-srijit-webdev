@@ -40,7 +40,7 @@
 
         function deletePage(pageId) {
             pageService
-                .deletePage(pageId)
+                .deletePage(pageId, model.websiteId)
                 .then(deleteSuccess, deleteError);
         }
 

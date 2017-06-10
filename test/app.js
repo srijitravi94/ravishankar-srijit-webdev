@@ -4,7 +4,7 @@ module.exports = function(app)
     app.post("/api/test", createMessage);
     app.delete("/api/test/:id", deleteMessage);
 
-    var connectionString = 'mongodb://127.0.0.1:27017/test';
+    var connectionString = 'mongodb://127.0.0.1:27017/CS5610';
 
     if(process.env.MLAB_USERNAME) {
         connectionString = process.env.MLAB_USERNAME + ":" +
@@ -16,6 +16,8 @@ module.exports = function(app)
 
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
+    mongoose.Promise = require('q').Promise;
+
 
     var TestSchema = mongoose.Schema({
         message: String

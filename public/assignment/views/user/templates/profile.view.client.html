@@ -20,19 +20,27 @@
 
 <div class="container-fluid">
 
-    <div class="alert alert-danger" ng-show="model.error">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.error">
+        <a class="close">&times;</a>
         {{model.error}}
     </div>
 
-    <div class="alert alert-danger" ng-show="model.deleteError">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.deleteError">
+        <a class="close">&times;</a>
         {{model.deleteError}}
     </div>
 
-    <div class="alert alert-danger" ng-show="model.errorMessage">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorMessage">
+        <a class="close">&times;</a>
         {{model.errorMessage}}
     </div>
 
-    <div class="alert alert-success" ng-show="model.successMessage">
+    <div class="alert alert-success alert-dismissable"
+         ng-show="model.successMessage">
+        <a class="close">&times;</a>
         {{model.successMessage}}
     </div>
 
@@ -99,3 +107,5 @@
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
+
+

@@ -21,7 +21,9 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="alert alert-danger" ng-show="model.errorWidgetCreate">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorWidgetCreate">
+        <a class="close">&times;</a>
         {{model.errorWidgetCreate}}
     </div>
 </div>

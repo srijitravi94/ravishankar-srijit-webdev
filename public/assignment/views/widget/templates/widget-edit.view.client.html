@@ -22,15 +22,21 @@
 
 <div class="container-fluid">
 
-    <div class="alert alert-danger" ng-show="model.errorWidget">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorWidget">
+        <a class="close">&times;</a>
         {{model.errorWidget}}
     </div>
 
-    <div class="alert alert-danger" ng-show="model.errorUpdate">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorUpdate">
+        <a class="close">&times;</a>
         {{model.errorUpdate}}
     </div>
 
-    <div class="alert alert-danger" ng-show="model.errorDelete">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorDelete">
+        <a class="close">&times;</a>
         {{model.errorDelete}}
     </div>
 

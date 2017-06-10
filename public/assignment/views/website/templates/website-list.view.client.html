@@ -20,7 +20,9 @@
 
 <div class="container-fluid">
 
-    <div class="alert alert-danger" ng-show="model.error">
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.error">
+        <a class="close">&times;</a>
         {{model.error}}
     </div>
 

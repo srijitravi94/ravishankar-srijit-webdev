@@ -23,7 +23,9 @@
     <div class="row">
         <div class="col-sm-4 hidden-xs">
 
-            <div class="alert alert-danger" ng-show="model.error">
+            <div class="alert alert-danger alert-dismissable"
+                 ng-show="model.error">
+                <a class="close">&times;</a>
                 {{model.error}}
             </div>
 
@@ -68,7 +70,9 @@
         </div>
         <div class="col-xs-12 col-sm-8">
 
-            <div class="alert alert-danger" ng-show="model.errorPageCreate">
+            <div class="alert alert-danger alert-dismissable"
+                 ng-show="model.errorPageCreate">
+                <a class="close">&times;</a>
                 {{model.errorPageCreate}}
             </div>
 

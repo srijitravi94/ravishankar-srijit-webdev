@@ -27,7 +27,9 @@
         </span>
     </div>
 
-    <div class="error alert alert-danger" ng-show="model.errorMessage">
+    <div class="error alert alert-danger alert-dismissable"
+         ng-show="model.errorMessage">
+        <a class="close">&times;</a>
         {{model.errorMessage}}
     </div>
 

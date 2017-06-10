@@ -34,6 +34,7 @@ function findPageById(pageId) {
 }
 
 function updatePage(page, pageId) {
+    page.updated = Date.now();
     return pageModel
         .update({_id: pageId}, {$set: page});
 }

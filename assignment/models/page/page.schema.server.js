@@ -5,7 +5,8 @@ var pageSchema = mongoose.Schema({
     name: String,
     description: String,
     widgets: [{type: mongoose.Schema.ObjectId, ref: "widgetModel"}],
-    dateCreated: {type: Date, default: Date.now}
+    dateCreated: {type: Date, default: Date.now},
+    updated : Date
 }, {collection : "assignment_pages"});
 
 module.exports = pageSchema;

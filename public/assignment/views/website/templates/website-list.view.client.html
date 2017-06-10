@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 visible-lg">
-                    {{website.dateCreated | date}}
+                    {{website.dateCreated | date : "h:mm a MMM d, y"}}
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs">
                     {{website._user.firstName}}

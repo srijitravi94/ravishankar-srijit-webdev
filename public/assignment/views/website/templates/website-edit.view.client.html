@@ -38,7 +38,7 @@
                             Created
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">
-                            Updated
+                            Developer
                         </div>
                         <div class="col-md-2 col-xs-6">
                         </div>
@@ -53,10 +53,10 @@
                             </a>
                         </div>
                         <div class="col-lg-2 visible-lg">
-                            {{website.created | date : "MMM, dd"}}
+                            {{website.dateCreated | date : "MMM, dd"}}
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">
-                            {{website.updated | date : "MMM, dd"}}
+                            {{website._user.firstName}}
                         </div>
                         <div class="col-md-2 col-xs-6">
                             <a href="#/user/{{model.userId}}/website/{{website._id}}">

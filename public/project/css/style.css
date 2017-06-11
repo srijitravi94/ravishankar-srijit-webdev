@@ -168,7 +168,9 @@ li span.content {
 }
 
 a.location-title {
-    color: #191919;
+    color: #bb4100;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+    text-decoration: underline;
 }
 
 .pagination {

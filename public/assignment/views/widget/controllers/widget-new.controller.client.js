@@ -21,7 +21,7 @@
 
 
         function getEditorTemplateUrl(widget) {
-            var templateUrl = 'views/widget/templates/editors/widget-'+widget.toLowerCase()+'-edit.view.client.html';
+            var templateUrl = 'views/widget/templates/editors/widget-'+widget+'-edit.view.client.html';
             return templateUrl;
         }
 
@@ -33,7 +33,7 @@
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function (widget) {
-                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType.toLowerCase()+ "/" +widget._id);
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType+ "/" +widget._id);
                 });
         }
 

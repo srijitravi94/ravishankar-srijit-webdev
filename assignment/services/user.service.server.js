@@ -8,7 +8,6 @@ app.put('/api/assignment/user/:userId',updateUser);
 app.delete('/api/assignment/user/:userId',deleteUser);
 
 
-
 function createUser(req, res) {
     var newUser = req.body;
 

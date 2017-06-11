@@ -51,7 +51,7 @@
 
         function deleteWidget(widget) {
             widgetService
-                .deleteWidget(model.widgetId)
+                .deleteWidget(model.pageId, model.widgetId)
                 .then(deleteSuccess, deleteError);
 
             function deleteSuccess() {

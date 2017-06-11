@@ -8,6 +8,7 @@ pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
+pageModel.addWidget = addWidget;
 
 module.exports = pageModel;
 
@@ -34,7 +35,6 @@ function findPageById(pageId) {
 }
 
 function updatePage(page, pageId) {
-    page.updated = Date.now();
     return pageModel
         .update({_id: pageId}, {$set: page});
 }
@@ -45,5 +45,14 @@ function deletePage(pageId, websiteId) {
         .then(function (status) {
             return websiteModel
                 .deletePage(websiteId, pageId)
+        });
+}
+
+function addWidget(pageId, widgetId) {
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+           page.widgets.push(widgetId);
+           return page.save();
         });
 }

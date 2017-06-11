@@ -30,7 +30,7 @@
         init();
 
         function getEditorTemplateUrl(widget) {
-            var templateUrl = 'views/widget/templates/editors/widget-' +widget.toLowerCase()+ '-edit.view.client.html';
+            var templateUrl = 'views/widget/templates/editors/widget-' +widget+ '-edit.view.client.html';
             return templateUrl;
         }
 

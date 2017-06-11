@@ -57,10 +57,11 @@ function updateWidget(req, res) {
 }
 
 function deleteWidget(req, res) {
+    var pageId = req.params.pageId;
     var widgetId = req.params.widgetId;
 
     widgetModel
-        .deleteWidget(widgetId)
+        .deleteWidget(pageId, widgetId)
         .then(function (status) {
            res.send(status)
         });

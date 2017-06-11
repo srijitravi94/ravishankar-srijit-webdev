@@ -14,7 +14,12 @@ module.exports = widgetModel;
 function createWidget(pageId, widget) {
     widget._page = pageId;
     return widgetModel
-        .create(widget);
+        .create(widget)
+        .then(function (widget) {
+           pageModel
+               .addWidget(pageId, widget._id);
+           return widget;
+        });
 }
 
 function findAllWidgetsForPage(pageId) {
@@ -32,7 +37,11 @@ function findWidgetById(widgetId) {
         .findById({_id : widgetId});
 }
 
-function deleteWidget(widgetId) {
+function deleteWidget(pageId, widgetId) {
     return widgetModel
-        .remove({_id : widgetId});
+        .remove({_id : widgetId})
+        .then(function (status) {
+            return pageModel
+                .deleteWidget(pageId, widgetId);
+        });
 }

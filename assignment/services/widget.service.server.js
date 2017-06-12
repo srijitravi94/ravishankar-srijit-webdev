@@ -11,7 +11,7 @@ app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/page/:pageId/widget/:widgetId', deleteWidget);
 app.post ('/api/assignment/upload', upload.single('myFile'), uploadImage);
-// app.put ('/api/assignment/page/:pageId/widget', sortWidget);
+app.put ('/api/assignment/page/:pageId/widget', reorderWidget);
 
 
 function createWidget(req, res) {
@@ -30,9 +30,29 @@ function findAllWidgetsForPage(req, res) {
 
     widgetModel
         .findAllWidgetsForPage(pageId)
-        .then(function (widget) {
-           res.json(widget);
+        .then(function (widgetIds) {
+            widgetModel
+                .findWidgetByIds(widgetIds)
+                .then(function (widgets) {
+                    var listOfWidgets = getWidgetList(widgets);
+                    var widgetList = [];
+
+                    for (var w = 0; w < widgetIds.length; w++) {
+                        var widgetId = widgetIds[w];
+                        var widget = listOfWidgets[widgetId];
+                        widgetList.push(widget);
+                    }
+                    res.json(widgetList);
+                });
         });
+}
+
+function getWidgetList(widgets) {
+    var widgetList = [];
+    for (var w in widgets) {
+        widgetList[widgets[w]._id] = widgets[w];
+    }
+    return widgetList;
 }
 
 function findWidgetById(req, res) {
@@ -96,35 +116,14 @@ function uploadImage(req, res) {
 }
 
 
+function reorderWidget(req, res) {
+    var start  = req.query.start;
+    var end    = req.query.end;
+    var pageId = req.params.pageId;
 
-// function sortWidget(req, res) {
-//     var start  = req.query.start;
-//     var end    = req.query.end;
-//     var pageId = req.params.pageId;
-//
-//     widgetModel
-//         .reorderWidget(pageId, start, end)
-//         .then(function (widget) {
-//            res.json(widget)
-//         });
-//
-//     // var newWidget = [];
-//     //
-//     // for(var w in widgets) {
-//     //     if(widgets[w].pageId === pageId) {
-//     //         newWidget.push(widgets[w]);
-//     //     }
-//     // }
-//     //
-//     // for(var w in newWidget) {
-//     //     var index = widgets.indexOf(newWidget[w]);
-//     //     widgets.splice(index,1);
-//     // }
-//     //
-//     // newWidget.splice(end-1, 0, newWidget.splice(start-1 ,1)[0]);
-//     //
-//     // for (var w in newWidget){
-//     //     widgets.push(newWidget[w]);
-//     // }
-//
-// }
+    widgetModel
+        .reorderWidget(pageId, start, end)
+        .then(function (response) {
+            res.send(response);
+        });
+}

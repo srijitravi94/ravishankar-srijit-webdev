@@ -6,8 +6,10 @@ var pageModel = require('../page/page.model.server');
 widgetModel.createWidget = createWidget;
 widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 widgetModel.findWidgetById = findWidgetById;
+widgetModel.findWidgetByIds = findWidgetsByIds;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
+widgetModel.reorderWidget = reorderWidget;
 
 module.exports = widgetModel;
 
@@ -23,8 +25,11 @@ function createWidget(pageId, widget) {
 }
 
 function findAllWidgetsForPage(pageId) {
-    return widgetModel
-        .find({_page : pageId})
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+           return page.widgets;
+        });
 }
 
 function updateWidget(widgetId, widget) {
@@ -37,6 +42,11 @@ function findWidgetById(widgetId) {
         .findById({_id : widgetId});
 }
 
+function findWidgetsByIds(widgetIds) {
+    return widgetModel
+        .find({'_id': {$in: widgetIds}})
+}
+
 function deleteWidget(pageId, widgetId) {
     return widgetModel
         .remove({_id : widgetId})
@@ -44,4 +54,18 @@ function deleteWidget(pageId, widgetId) {
             return pageModel
                 .deleteWidget(pageId, widgetId);
         });
+}
+
+
+function reorderWidget(pageId, start, end) {
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+            var widgets = page.widgets;
+            widgets.splice(end-1, 0, widgets.splice(start-1, 1)[0]);
+            page.widgets = widgets;
+
+            return pageModel
+                .updatePage(page, pageId);
+        })
 }

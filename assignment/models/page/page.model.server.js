@@ -10,6 +10,7 @@ pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
 pageModel.addWidget = addWidget;
 pageModel.deleteWidget = deleteWidget;
+// pageModel.updatePageWidgets = updatePageWidgets;
 
 module.exports = pageModel;
 
@@ -40,6 +41,15 @@ function updatePage(page, pageId) {
     return pageModel
         .update({_id: pageId}, {$set: page});
 }
+
+// function updatePageWidgets(widgets, pageId){
+//     var page = pageModel.findPageById(pageId);
+//     page.widgets = widgets;
+//     console.log(page.widgets);
+//             return pageModel
+//                 .updatePage(page, pageId);
+//
+// }
 
 function deletePage(pageId, websiteId) {
     return pageModel

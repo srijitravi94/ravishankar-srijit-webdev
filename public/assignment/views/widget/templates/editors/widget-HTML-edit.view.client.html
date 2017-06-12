@@ -7,11 +7,13 @@
            id="name"/>
 
     <label for="text">Text</label>
-    <textarea ng-model="model.widgets.text"
-              class="form-control"
-              id="Text"
-              rows="5"
-              placeholder="<p>Lorem Ipsum</p>" ></textarea>
-
+    <div class="form-group">
+        <div ng-model="model.widgets.text"
+             id="text"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+            ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html']]">
+        </div>
+    </div>
 </div>
-

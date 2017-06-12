@@ -47,6 +47,9 @@
                 size       : widget.size,
                 width      : widget.width,
                 url        : widget.url,
+                placeholder: widget.placeholder,
+                rows       : widget.rows,
+                formattable: widget.formattable,
                 widgetType : widget.widgetType
             };
 

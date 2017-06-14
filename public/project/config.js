@@ -30,7 +30,9 @@
                 url:"register",
                 views: {
                     "content@": {
-                        templateUrl : "views/users/templates/register.view.client.html"
+                        templateUrl : "views/users/templates/register.view.client.html",
+                        controller : "registerController",
+                        controllerAs : "model"
                     }
                 }
             })
@@ -40,10 +42,24 @@
                 url:"login",
                 views: {
                     "content@": {
-                        templateUrl : "views/users/templates/login.view.client.html"
+                        templateUrl : "views/users/templates/login.view.client.html",
+                        controller : "loginController",
+                        controllerAs : "model"
                     }
                 }
 
+            })
+
+            //route for profile page
+            .state("index.profile", {
+                url : "profile/:profileId",
+                views : {
+                    "content@" : {
+                        templateUrl : "views/users/templates/profile.view.client.html",
+                        controller : "profileController",
+                        controllerAs : "model"
+                    }
+                }
             })
 
             //route for location search results page

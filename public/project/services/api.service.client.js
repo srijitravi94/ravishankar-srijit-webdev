@@ -5,7 +5,7 @@
     
     function apiService($http) {
 
-        var api ={
+        var api = {
             "searchLocation"        : searchLocation,
             "searchCollections"     : searchCollections,
             "restaurantCollections" : restaurantCollections,

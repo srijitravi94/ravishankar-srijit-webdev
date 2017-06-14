@@ -92,6 +92,13 @@
     margin-bottom: 10%;
 }
 
+.profile {
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 10%;
+}
+
 .login-header-element,
 .register-header-element {
     margin-right: 20px;
@@ -151,6 +158,13 @@ a .glyphicon-search {
 
     .register, .login {
         padding-top: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 10%;
+    }
+
+    .profile {
+        padding-top: 10%;
         margin-left: 10%;
         margin-right: 10%;
         margin-bottom: 10%;
@@ -288,4 +302,3 @@ a.restaurant-menu {
 .restaurant-menu {
     margin-bottom: 80px;
 }
-

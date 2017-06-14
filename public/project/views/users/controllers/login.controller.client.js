@@ -1,13 +1,12 @@
 (function () {
     angular
-        .module('WAM')
-        .controller('loginController',loginController);
-    
-    function loginController($location, userService) {
+        .module("BonAppetit")
+        .controller("loginController", loginController);
 
+    function loginController(userService, $location) {
         var model = this;
         model.login = login;
-        
+
         function login(username, password) {
 
             if(username === null || username === '' || typeof username === 'undefined') {
@@ -26,7 +25,7 @@
 
             function foundUser(user) {
                 if(user !== null) {
-                    $location.url('/user/'  +user._id);
+                    $location.url('/profile/'  +user._id);
                 }
             }
 
@@ -35,5 +34,4 @@
             }
         }
     }
-
 })();

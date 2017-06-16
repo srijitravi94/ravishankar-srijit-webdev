@@ -3,13 +3,19 @@
         .module('WAM')
         .controller('profileController',profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController($location, userService, currentUser) {
 
         var model = this;
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.logout = logout;
 
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
+
+        function init() {
+            renderUser(currentUser);
+        }
+        init();
 
 
         userService
@@ -51,6 +57,20 @@
                 model.deleteError = "Unable to delete the user";
             }
 
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(logoutSuccess, logoutError);
+
+            function logoutSuccess() {
+                $location.url('/login');
+            }
+
+            function logoutError() {
+                model.error = "Unable to logout user !!!"
+            }
         }
     }
 })();

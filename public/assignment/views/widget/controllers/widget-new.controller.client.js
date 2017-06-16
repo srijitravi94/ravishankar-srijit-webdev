@@ -3,9 +3,9 @@
         .module('WAM')
         .controller('widgetNewController', widgetNewController);
 
-    function widgetNewController($routeParams, widgetService, $location) {
+    function widgetNewController($routeParams, widgetService, $location, currentUser) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
@@ -33,7 +33,7 @@
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function (widget) {
-                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType+ "/" +widget._id);
+                    $location.url("/website/"+model.websiteId+"/page/"+model.pageId+"/widget/new/"+widgetType+ "/" +widget._id);
                 });
         }
 
@@ -59,7 +59,7 @@
         }
 
         function updateSuccess() {
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+            $location.url("/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
         }
 
         function updateError() {

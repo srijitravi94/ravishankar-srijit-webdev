@@ -110,7 +110,7 @@ function uploadImage(req, res) {
             widgetModel
                .updateWidget(widgetId, widget)
                .then(function () {
-                   res.redirect("/assignment/index.html#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/")
+                   res.redirect("/assignment/index.html#/website/" + websiteId + "/page/" + pageId + "/widget/")
                });
         });
 }

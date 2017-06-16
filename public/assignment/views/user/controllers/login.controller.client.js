@@ -21,12 +21,12 @@
             }
 
             userService
-                .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(foundUser, notFound);
 
             function foundUser(user) {
                 if(user !== null) {
-                    $location.url('/user/'  +user._id);
+                    $location.url('/profile');
                 }
             }
 

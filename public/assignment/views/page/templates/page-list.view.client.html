@@ -3,15 +3,15 @@
     <div class="container-fluid row">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website" class="navbar-link">
+                <a href="#/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <a class="navbar-brand" href="#/website/{{model.websiteId}}/page">
                 My Pages
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                <a href="#/website/{{model.websiteId}}/page/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -47,7 +47,7 @@
         <li ng-repeat="page in model.pages" class="list-group-item">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-xs-6">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                    <a href="#/website/{{model.websiteId}}/page/{{page._id}}/widget">
                         {{page.name}}
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                     {{page.updated | date: "h:mm a MMM d, y"}}
                 </div>
                 <div class="col-md-1 col-xs-6">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                    <a href="#/website/{{model.websiteId}}/page/{{page._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>

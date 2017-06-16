@@ -10,6 +10,10 @@
             findUserByUsername : findUserByUsername,
             findUserByCredentials : findUserByCredentials,
             findUserById : findUserById,
+            login : login,
+            checkLoggedIn : checkLoggedIn,
+            register : register,
+            logout : logout,
             updateUser : updateUser,
             deleteUser : deleteUser
         };
@@ -43,6 +47,42 @@
         function findUserById(userId) {
             var url = "/api/assignment/user/"+userId;
             return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function login(username, password) {
+            var url = "/api/assignment/login";
+            var credentials = {
+                username : username,
+                password : password
+            };
+            return $http.post(url, credentials)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function checkLoggedIn() {
+            var url = "/api/assignment/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+        
+        function register(newUser) {
+            var url = "/api/assignment/register";
+            return $http.post(url, newUser)
+                .then(function (response) {
+                   return response.data;
+                });
+        }
+        
+        function logout() {
+            var url = "/api/assignment/logout";
+            return $http.post(url)
                 .then(function (response) {
                     return response.data;
                 });

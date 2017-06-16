@@ -3,9 +3,9 @@
         .module('WAM')
         .controller('websiteNewController', websiteNewController);
     
-    function websiteNewController($routeParams, websiteService, $location) {
+    function websiteNewController(websiteService, $location, currentUser) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.createWebsite = createWebsite;
 
         function init() {
@@ -31,7 +31,7 @@
         }
 
         function websiteCreateSuccess() {
-            $location.url('/user/'+model.userId+'/website');
+            $location.url('/website');
         }
 
         function websiteCreateError() {

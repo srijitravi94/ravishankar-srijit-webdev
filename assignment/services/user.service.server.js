@@ -1,43 +1,71 @@
-var app           = require('../../express');
-var userModel     = require('../models/user/user.model.server');
-var passport      = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
+var app            = require('../../express');
+var userModel      = require('../models/user/user.model.server');
+var passport       = require('passport');
+var LocalStrategy  = require('passport-local').Strategy;
+var bcrypt         = require('bcrypt-nodejs');
 
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-app.post('/api/assignment/user', createUser);
-app.get('/api/assignment/user', findAllUsers);
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var googleConfig = {
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+
+
+app.post('/api/assignment/user',isAdmin, createUser);
+app.get('/api/assignment/user',isAdmin, findAllUsers);
+app.delete('/api/assignment/user/:userId',isAdmin, deleteUser);
+app.put('/api/assignment/user/:userId',isAdmin, updateUser);
+
+app.get('/api/assignment/username', findUserByUsername);
 app.get('/api/assignment/user/:userId', findUserById);
-app.put('/api/assignment/user/:userId',updateUser);
-app.delete('/api/assignment/user/:userId',deleteUser);
+app.put('/api/assignment/userProfile/:userId', updateIndividualUser);
 
 app.post('/api/assignment/login', passport.authenticate('local'), login);
 app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
+app.get('/api/assignment/checkAdmin', checkAdmin);
 app.post('/api/assignment/register', register);
+app.post('/api/assignment/unregister', unregister);
 app.post('/api/assignment/logout', logout);
 
+app.get('/auth/google',
+    passport.authenticate('google', {
+            scope : ['profile', 'email']
+        })
+);
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/assignment/index.html#/profile',
+        failureRedirect: '/assignment/index.html#/login'
+    })
+);
 
 function localStrategy(username, password, done) {
-    userModel
-        .findUserByCredentials(username, password)
-        .then(function(user) {
-                if (user) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
 
-            },
-            function(err) {
-                if (err) {
-                    return done(err, false);
-                }
+    userModel
+        .findUserByUsername(username)
+        .then(function(user) {
+            if (bcrypt.compareSync (password, user.password)) {
+                return userModel
+                    .findUserByCredentials(username, user.password)
+                    .then(function (user) {
+                        if (user) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false);
+                        }
+                    });
             }
-        );
+        });
 }
+
 
 function checkLoggedIn(req, res) {
    if(req.isAuthenticated()) {
@@ -47,6 +75,15 @@ function checkLoggedIn(req, res) {
    }
 }
 
+function checkAdmin(req, res) {
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+
 function login(req, res) {
     var user = req.user;
     res.json(user);
@@ -54,12 +91,26 @@ function login(req, res) {
 
 function register(req, res) {
     var newUser = req.body;
+
+    newUser.password = bcrypt.hashSync(newUser.password);
+
     userModel
         .createUser(newUser)
         .then(function (user) {
             req.login(user, function (status) {
                res.send(status);
             });
+        });
+}
+
+function unregister(req, res) {
+    var userId = req.user._id;
+
+    userModel
+        .deleteUser(userId)
+        .then(function (user) {
+            req.logout();
+            res.sendStatus(200);
         });
 }
 
@@ -80,40 +131,34 @@ function createUser(req, res) {
         });
 }
 
+function isAdmin(req, res, next) {
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 function findAllUsers (req, res) {
+
+    userModel
+        .findAllUsers()
+        .then(function (users) {
+            res.json(users);
+        })
+}
+
+function findUserByUsername(req, res) {
     var username = req.query.username;
-    var password = req.query.password;
 
-    if(username && password) {
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function (user) {
-               if(user) {
-                   res.json(user);
-               } else {
-                   res.sendStatus(404);
-               }
-            });
-    }
-
-    else if (username){
-        userModel
-            .findUserByUsername(username)
-            .then(function (user) {
-               if(user) {
-                   res.json(user);
-               } else
-                   res.sendStatus(404);
-            });
-    }
-
-    else {
-        userModel
-            .findAllUsers()
-            .then(function (users) {
-                res.json(users);
-            })
-    }
+    userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            if(user) {
+                res.json(user);
+            } else
+                res.sendStatus(404);
+        });
 }
 
 function findUserById(req, res) {
@@ -134,6 +179,19 @@ function updateUser(req, res) {
         .updateUser(userId, user)
         .then(function (status) {
            res.send(status);
+        });
+}
+
+function updateIndividualUser(req, res) {
+    var userId = req.params.userId;
+    var user = req.body;
+
+    user.password = bcrypt.hashSync(user.password);
+
+    userModel
+        .updateUser(userId, user)
+        .then(function (status) {
+            res.send(status);
         });
 }
 
@@ -160,6 +218,43 @@ function deserializeUser(user, done) {
             },
             function(err){
                 done(err, null);
+            }
+        );
+}
+
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        google: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
             }
         );
 }

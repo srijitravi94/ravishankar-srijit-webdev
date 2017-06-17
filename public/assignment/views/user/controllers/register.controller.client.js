@@ -31,7 +31,7 @@
             }
 
             if(password !== password2) {
-                model.error = "Sorry, passwords must match";
+                model.error = "Sorry, the passwords must match";
                 return;
             }
 
@@ -40,7 +40,7 @@
                 .then(ifFound, ifNotFound);
             
             function ifFound() {
-                model.error = "Sorry, that username is taken";
+                model.error = "Sorry, the username is already taken";
             }
             
             function ifNotFound() {
@@ -50,6 +50,7 @@
                     lastName : lastName,
                     password : password
                 };
+
                 return userService
                     .register(newUser)
                     .then(function (user) {

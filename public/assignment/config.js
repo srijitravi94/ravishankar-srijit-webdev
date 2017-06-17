@@ -29,6 +29,22 @@
                 controllerAs : 'model'
             })
 
+            .when('/admin', {
+                templateUrl : 'views/admin/templates/admin.view.client.html',
+                resolve : {
+                    currentUser : checkAdmin
+                }
+            })
+
+            .when('/admin/users', {
+                templateUrl : 'views/admin/templates/admin-users.view.client.html',
+                controller : 'adminUsersController',
+                controllerAs : 'model',
+                resolve : {
+                    currentUser : checkAdmin
+                }
+            })
+
             .when('/profile', {
                 templateUrl : 'views/user/templates/profile.view.client.html',
                 controller : 'profileController',
@@ -162,7 +178,7 @@
         return deferred.promise;
     }
 
-    function checkCurrentUser($location, $q, userService) {
+    function checkCurrentUser($q, userService) {
         var deferred = $q.defer();
 
         userService
@@ -170,6 +186,24 @@
             .then(function (currentUser) {
                 if(currentUser === '0') {
                     deferred.resolve({});
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+
+        return deferred.promise;
+    }
+
+
+    function checkAdmin($location, $q, userService) {
+        var deferred = $q.defer();
+
+        userService
+            .checkAdmin()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/');
                 } else {
                     deferred.resolve(currentUser);
                 }

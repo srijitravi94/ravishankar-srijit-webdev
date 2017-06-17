@@ -6,9 +6,10 @@
     function profileController($location, userService, currentUser) {
 
         var model = this;
-        model.updateUser = updateUser;
+        model.updateIndividualUser = updateIndividualUser;
         model.deleteUser = deleteUser;
         model.logout = logout;
+        model.unregisterUser = unregisterUser;
 
         model.userId = currentUser._id;
 
@@ -30,9 +31,9 @@
             model.error = "User not found"
         }
 
-        function updateUser(user) {
+        function updateIndividualUser(user) {
             userService
-                .updateUser(user._id, user)
+                .updateIndividualUser(user._id, user)
                 .then(successMessage, errorMessage);
 
             function successMessage() {
@@ -72,5 +73,20 @@
                 model.error = "Unable to logout user !!!"
             }
         }
+
+        function unregisterUser() {
+            userService
+                .unregisterUser()
+                .then(unregisterSuccess, unregisterError);
+        }
+
+        function unregisterSuccess() {
+            $location.url('/login');
+        }
+
+        function unregisterError() {
+            model.deleteError = "Unable to delete the user";
+        }
+
     }
 })();

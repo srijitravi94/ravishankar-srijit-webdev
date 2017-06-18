@@ -24,12 +24,17 @@
         }
         init();
 
-        function createPage(page) {
+        function createPage(name, description) {
 
-            if(page.name === null || page.name === '' || typeof page.name === 'undefined') {
+            if(name === null || name === '' || typeof name === 'undefined') {
                 model.errorName = "Page name is required";
                 return;
             }
+
+            var page = {
+                name        : name,
+                description : description
+            };
 
             pageService
                 .createPage(page, model.websiteId)

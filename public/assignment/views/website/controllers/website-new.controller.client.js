@@ -23,16 +23,21 @@
             model.error = "Sorry, unable to retrieve the websites";
         }
 
-        function createWebsite(website) {
+        function createWebsite(name, description) {
 
-            if(website.name === null || website.name === '' || typeof website.name === 'undefined') {
+            if(name === null || name === '' || typeof name === 'undefined') {
                 model.errorName = "Website name is required";
                 return model.errorName;
             }
 
+            var website = {
+                name        : name,
+                description : description
+            };
+
             websiteService
-            .createWebsite(website, model.userId)
-            .then(websiteCreateSuccess, websiteCreateError);
+                .createWebsite(website, model.userId)
+                .then(websiteCreateSuccess, websiteCreateError);
 
         }
 

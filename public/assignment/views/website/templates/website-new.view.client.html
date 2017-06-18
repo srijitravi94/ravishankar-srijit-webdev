@@ -86,18 +86,18 @@
 
             <label for="name">Name</label>
             <input class="form-control"
-                   ng-model="model.website.name"
+                   ng-model="name"
                    placeholder="facebook"
                    id="name"/>
 
             <label for="description">Description</label>
             <textarea id="description"
-                      ng-model="model.website.description"
+                      ng-model="description"
                       rows="5"
                       placeholder="So big it is its own country"
                       class="form-control"></textarea>
 
-            <a ng-click="model.createWebsite(model.website)"
+            <a ng-click="model.createWebsite(name, description)"
                class="btn btn-block btn-success">
                 Create
             </a>

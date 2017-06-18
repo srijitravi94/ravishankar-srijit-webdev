@@ -24,7 +24,8 @@
 
             <div class="alert alert-danger alert-dismissable"
                  ng-show="model.error">
-                <a class="close">&times;</a>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
                 {{model.error}}
             </div>
 
@@ -71,8 +72,16 @@
 
             <div class="alert alert-danger alert-dismissable"
                  ng-show="model.errorWebsiteCreate">
-                <a class="close">&times;</a>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
                 {{model.errorWebsiteCreate}}
+            </div>
+
+            <div class="alert alert-danger alert-dismissable"
+                 ng-show="model.errorName">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                {{model.errorName}}
             </div>
 
             <label for="name">Name</label>

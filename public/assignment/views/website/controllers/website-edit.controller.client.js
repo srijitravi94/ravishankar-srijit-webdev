@@ -39,6 +39,12 @@
 
 
         function updateWebsite(newWebsite) {
+
+            if(newWebsite.name === null || newWebsite.name === '' || typeof newWebsite.name === 'undefined') {
+                model.errorName = "Website name is required";
+                return;
+            }
+
             websiteService
                 .updateWebsite(model.websiteId, newWebsite)
                 .then(updateSuccess, updateError);

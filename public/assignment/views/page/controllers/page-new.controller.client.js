@@ -25,6 +25,12 @@
         init();
 
         function createPage(page) {
+
+            if(page.name === null || page.name === '' || typeof page.name === 'undefined') {
+                model.errorName = "Page name is required";
+                return;
+            }
+
             pageService
                 .createPage(page, model.websiteId)
                 .then(pageCreateSuccess, pageCreateError);

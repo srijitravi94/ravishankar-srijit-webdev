@@ -23,6 +23,7 @@
             userService
                 .login(username, password)
                 .then(foundUser, notFound);
+        }
 
             function foundUser(user) {
                 if(user !== null) {
@@ -30,10 +31,10 @@
                 }
             }
 
-            function notFound(error) {
-                model.error = "Sorry, " +username+ " not found or the password doesn't match. Please try again";
+            function notFound(err) {
+                model.errorLogin = "Sorry, username not found or the password doesn't match. Please try again";
             }
-        }
+
     }
 
 })();

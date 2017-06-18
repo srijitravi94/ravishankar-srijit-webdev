@@ -24,10 +24,16 @@
         }
 
         function createWebsite(website) {
-            // website.developerId = model.userId;
+
+            if(website.name === null || website.name === '' || typeof website.name === 'undefined') {
+                model.errorName = "Website name is required";
+                return model.errorName;
+            }
+
             websiteService
-                .createWebsite(website, model.userId)
-                .then(websiteCreateSuccess, websiteCreateError);
+            .createWebsite(website, model.userId)
+            .then(websiteCreateSuccess, websiteCreateError);
+
         }
 
         function websiteCreateSuccess() {

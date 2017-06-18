@@ -53,6 +53,16 @@
                 widgetType : widget.widgetType
             };
 
+            if(widgets.name === null || widgets.name === '' || typeof widgets.name === 'undefined') {
+                model.errorName = "Widget name is required";
+                return;
+            }
+
+            if(widgets.text === null || widgets.text === '' || typeof widgets.text === 'undefined') {
+                model.errorName = "Widget text is required";
+                return;
+            }
+
             widgetService
                 .updateWidget(model.widgetId, widgets)
                 .then(updateSuccess, updateError);

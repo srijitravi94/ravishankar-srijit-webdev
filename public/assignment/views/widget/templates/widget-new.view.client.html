@@ -23,8 +23,16 @@
 <div class="container-fluid">
     <div class="alert alert-danger alert-dismissable"
          ng-show="model.errorWidgetCreate">
-        <a class="close">&times;</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
         {{model.errorWidgetCreate}}
+    </div>
+
+    <div class="alert alert-danger alert-dismissable"
+         ng-show="model.errorName">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        {{model.errorName}}
     </div>
 </div>
 

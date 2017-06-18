@@ -53,6 +53,11 @@
         }
 
         function updatePage(newPage) {
+
+            if(newPage.name === null || newPage.name === '' || typeof newPage.name === 'undefined') {
+                model.errorName = "Page name is required";
+                return model.errorName;
+            }
             pageService
                 .updatePage(model.pageId, newPage)
                 .then(updateSuccess, updateError);

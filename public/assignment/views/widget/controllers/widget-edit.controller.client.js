@@ -35,6 +35,17 @@
         }
 
         function updateWidget(widget) {
+
+            if(widget.name === null || widget.name === '' || typeof widget.name === 'undefined') {
+                model.errorName = "Widget name is required";
+                return;
+            }
+
+            if(widget.text === null || widget.text === '' || typeof widget.text === 'undefined') {
+                model.errorName = "Widget text is required";
+                return;
+            }
+
             widgetService
                 .updateWidget(model.widgetId, widget)
                 .then(updateSuccess, updateError);

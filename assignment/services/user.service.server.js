@@ -16,6 +16,14 @@ var googleConfig = {
 };
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
+var FacebookStrategy = require('passport-facebook').Strategy;
+var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+    profileFields : ['id', 'emails','name']
+};
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
 app.post('/api/assignment/user',isAdmin, createUser);
@@ -47,23 +55,44 @@ app.get('/auth/google/callback',
     })
 );
 
+
+app.get('/auth/facebook',
+    passport.authenticate('facebook', {
+        scope : ['email']
+    })
+);
+
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/assignment/index.html#/profile',
+        failureRedirect: '/assignment/index.html#/login'
+    })
+);
+
 function localStrategy(username, password, done) {
 
     userModel
         .findUserByUsername(username)
         .then(function(user) {
-            if (bcrypt.compareSync (password, user.password)) {
-                return userModel
-                    .findUserByCredentials(username, user.password)
-                    .then(function (user) {
-                        if (user) {
-                            return done(null, user);
-                        } else {
-                            return done(null, false);
-                        }
-                    });
+            if(user) {
+                if (bcrypt.compareSync (password, user.password)) {
+                    return userModel
+                        .findUserByCredentials(username, user.password)
+                        .then(function (user) {
+                            if (user) {
+                                return done(null, user);
+                            } else {
+                                return done(null, false);
+                            }
+                        });
+                }
+                else {
+                    return done(null, false);
+                }
+            } else {
+                return done(null, false);
             }
-        });
+    });
 }
 
 
@@ -247,14 +276,49 @@ function googleStrategy(token, refreshToken, profile, done) {
             },
             function(err) {
                 if (err) { return done(err); }
-            }
-        )
-        .then(
-            function(user){
+            })
+
+        .then(function(user){
                 return done(null, user);
             },
             function(err){
                 if (err) { return done(err); }
+            });
+}
+
+
+function facebookStrategy(accessToken, refreshToken, profile, done) {
+    userModel
+        .findUserByFacebookId(profile.id)
+        .then(function (user) {
+            if(user) {
+                return done(null, user);
+            } else {
+                var email = profile.emails[0].value;
+                var emailParts = email.split("@");
+                var newFacebookUser = {
+                    username:  emailParts[0],
+                    firstName: profile.name.givenName,
+                    lastName:  profile.name.familyName,
+                    email:     email,
+                    facebook: {
+                        id:    profile.id,
+                        token: accessToken
+                    }
+                };
+                return userModel
+                    .createUser(newFacebookUser);
             }
-        );
+        }, function(err) {
+            if (err) { return done(err); }
+        })
+
+        .then(function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) {
+                    return done(err);
+                }
+            });
 }

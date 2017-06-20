@@ -16,7 +16,6 @@ app.use(passport.session());
 
 app.use(app.express.static(__dirname + '/public'));
 
-require("./project/app");
 require("./assignment/app");
 require("./test/app.js")(app);
 

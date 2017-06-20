@@ -75,7 +75,6 @@
 
             return $http.post(url, credentials)
                 .then(function (response) {
-                    console.log(response);
                     return response.data;
                 });
         }

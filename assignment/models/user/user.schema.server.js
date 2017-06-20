@@ -24,6 +24,6 @@ var userSchema = mongoose.Schema({
     phone : String,
     websites : [{type: mongoose.Schema.Types.ObjectId, ref : "websiteModel"}],
     dateCreated : {type : Date, default: Date.now}
-}, {collection : "assignment_users"});
+}, {collection : "users"});
 
 module.exports = userSchema;

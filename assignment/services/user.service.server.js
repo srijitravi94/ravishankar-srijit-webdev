@@ -8,22 +8,22 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
-};
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
-
-var FacebookStrategy = require('passport-facebook').Strategy;
-var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
-    profileFields : ['id', 'emails','name']
-};
-passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var googleConfig = {
+//     clientID     : process.env.GOOGLE_CLIENT_ID,
+//     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+// };
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+//
+// var FacebookStrategy = require('passport-facebook').Strategy;
+// var facebookConfig = {
+//     clientID     : process.env.FACEBOOK_CLIENT_ID,
+//     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+//     callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+//     profileFields : ['id', 'emails','name']
+// };
+// passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 
 app.post('/api/assignment/user',isAdmin, createUser);
